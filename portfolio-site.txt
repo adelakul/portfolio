@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Data Analysis Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Your Name</h1>
+      <nav class="space-x-6">
+        <a href="#projects" class="hover:text-blue-600">Projects</a>
+        <a href="#skills" class="hover:text-blue-600">Skills</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 bg-gradient-to-r from-blue-100 to-blue-50">
+    <h2 class="text-4xl font-bold mb-4">Hi, I'm Adelakun Tomisin Michael</h2>
+    <p class="text-lg max-w-xl mx-auto">Data Analyst with expertise in transforming data into actionable insights using tools like Power BI, SQL, and Python.</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 py-16">
+    <h3 class="text-3xl font-bold mb-8">Projects</h3>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Project Card -->
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h4 class="text-xl font-semibold mb-2">Accident Analysis Dashboard</h4>
+        <p class="text-sm text-gray-600 mb-4">Interactive Power BI dashboard showing crash trends, locations, and injury severity over time.</p>
+        <a href="#" class="text-blue-500 hover:underline">View Project</a>
+      </div>
+      <!-- Repeat for more projects -->
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-3xl font-bold mb-8">Skills</h3>
+      <div class="flex flex-wrap gap-4">
+        <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full">Power BI</span>
+        <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full">SQL</span>
+        <span class="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full">Excel</span>
+        <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">Python</span>
+        <span class="bg-red-100 text-red-700 px-4 py-2 rounded-full">SSIS</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-gray-100 py-16">
+    <div class="max-w-xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-4">Let's Connect</h3>
+      <p class="mb-6">Feel free to reach out for collaborations or just a chat!</p>
+      <a href="mailto:michealtom2001@gmail.com" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700">Email Me</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 py-6">
+    &copy; 2025 Your Name. All rights reserved.
+  </footer>
+</body>
+</html>
