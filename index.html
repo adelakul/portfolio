@@ -108,9 +108,26 @@
       .carousel-next {
         display: none;
       }
-      
       .hero-text {
         font-size: 2.5rem;
+      }
+      .carousel {
+        justify-content: center;
+      }
+      .carousel-item {
+        min-width: 80%;
+      }
+      .grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+      .md:grid-cols-2 {
+        grid-template-columns: 1fr;
+      }
+      .md:grid-cols-3 {
+        grid-template-columns: 1fr;
+      }
+      .flex-col.sm:flex-row {
+        flex-direction: column;
       }
     }
     
@@ -240,7 +257,7 @@
           </a>
         </div>
         <!-- Stats Section -->
-        <div class="flex flex-wrap gap-8 mt-12">
+        <div class="flex flex-wrap gap-8 mt-12 justify-center">
           <div class="text-center">
             <div class="text-3xl font-bold" data-count="15">0</div>
             <div class="text-sm opacity-75">Projects Completed</div>
@@ -296,9 +313,9 @@
           </p>
         </div>
         
-        <!-- Key Strengths */
+        <!-- Key Strengths -->
         <div class="grid md:grid-cols-2 gap-6 mt-8 mx-auto max-w-3xl">
-          <div class="flex items-start space-x-3">
+          <div class="flex items-start space-x-3 justify-center">
             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
               <i class="fas fa-chart-line text-blue-600"></i>
             </div>
@@ -307,7 +324,7 @@
               <p class="text-gray-600 text-sm">Creating compelling dashboards that tell data stories</p>
             </div>
           </div>
-          <div class="flex items-start space-x-3">
+          <div class="flex items-start space-x-3 justify-center">
             <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
               <i class="fas fa-database text-green-600"></i>
             </div>
@@ -316,7 +333,7 @@
               <p class="text-gray-600 text-sm">Efficient data extraction and transformation</p>
             </div>
           </div>
-          <div class="flex items-start space-x-3">
+          <div class="flex items-start space-x-3 justify-center">
             <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
               <i class="fas fa-brain text-purple-600"></i>
             </div>
@@ -325,7 +342,7 @@
               <p class="text-gray-600 text-sm">Problem-solving with data-driven approaches</p>
             </div>
           </div>
-          <div class="flex items-start space-x-3">
+          <div class="flex items-start space-x-3 justify-center">
             <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
               <i class="fas fa-lightbulb text-yellow-600"></i>
             </div>
@@ -373,12 +390,12 @@
             <p class="text-gray-600 mb-4 leading-relaxed">
               Developed an interactive Power BI dashboard analyzing crash trends, locations, and injury severity with advanced filtering capabilities.
             </p>
-            <div class="flex flex-wrap gap-2 mb-6">
+            <div class="flex flex-wrap gap-2 mb-6 justify-center">
               <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Power BI</span>
               <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">SQL</span>
               <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Data Analysis</span>
             </div>
-            <div class="flex flex-wrap gap-4 mb-6">
+            <div class="flex flex-wrap gap-4 mb-6 justify-center">
               <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" 
                  target="_blank" 
                  class="flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
@@ -422,13 +439,13 @@
                 Config-based cleaning, SQL Server integration, dynamic schema handling, and Power BI dashboards.
               </p>
             </div>
-            <div class="flex flex-wrap gap-2 mb-6">
+            <div class="flex flex-wrap gap-2 mb-6 justify-center">
               <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Python</span>
               <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Docker</span>
               <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">SQL Server</span>
               <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Power BI</span>
             </div>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 justify-center">
               <a href="https://github.com/adelakul/retail-pulse" 
                  target="_blank" 
                  class="flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
@@ -457,13 +474,13 @@
                 Forecast accuracy evaluation, CSV export, Power BI integration, model serialization.
               </p>
             </div>
-            <div class="flex flex-wrap gap-2 mb-6">
+            <div class="flex flex-wrap gap-2 mb-6 justify-center">
               <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Python</span>
               <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Prophet</span>
               <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">ARIMA</span>
               <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Power BI</span>
             </div>
-            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-wrap gap-4 justify-center">
               <a href="https://github.com/adelakul/adidas-sales-forecast" 
                  target="_blank" 
                  class="flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
@@ -492,7 +509,7 @@
     </p>
     <div class="grid gap-8 md:grid-cols-2 justify-center">
       <!-- Enhanced Blog Post 1 -->
-      <article class="blog-card card-hover bg-white rounded-3xl shadow-lg p-8">
+      <article class="blog-card card-hover bg-white rounded-3xl shadow-lg p-8 max-w-md mx-auto">
         <div class="flex items-center mb-4 justify-center">
           <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
             <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
@@ -542,7 +559,7 @@
       </article>
 
       <!-- Enhanced Blog Post 2 -->
-      <article class="blog-card card-hover bg-white rounded-3xl shadow-lg p-8">
+      <article class="blog-card card-hover bg-white rounded-3xl shadow-lg p-8 max-w-md mx-auto">
         <div class="flex items-center mb-4 justify-center">
           <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
             <i class="fas fa-database text-green-600 text-xl"></i>
@@ -604,7 +621,7 @@
       <!-- Skills Categories -->
       <div class="grid md:grid-cols-3 gap-8 mb-12 justify-center">
         <!-- Data Visualization -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover max-w-xs mx-auto">
           <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
             <i class="fas fa-chart-pie text-blue-600 text-xl"></i>
           </div>
@@ -621,7 +638,7 @@
         </div>
         
         <!-- Database Management -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover max-w-xs mx-auto">
           <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
             <i class="fas fa-database text-green-600 text-xl"></i>
           </div>
@@ -638,7 +655,7 @@
         </div>
         
         <!-- Programming -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover">
+        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover max-w-xs mx-auto">
           <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
             <i class="fas fa-code text-purple-600 text-xl"></i>
           </div>
@@ -696,7 +713,7 @@
     </p>
     <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-center">
       <!-- Certification 1 -->
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl shadow-lg p-8 card-hover">
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl shadow-lg p-8 card-hover max-w-sm mx-auto">
         <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
           <i class="fas fa-certificate text-white text-2xl"></i>
         </div>
@@ -715,7 +732,7 @@
       </div>
       
       <!-- Certification 2 -->
-      <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-lg p-8 card-hover">
+      <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-lg p-8 card-hover max-w-sm mx-auto">
         <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
           <i class="fab fa-google text-white text-2xl"></i>
         </div>
@@ -734,7 +751,7 @@
       </div>
       
       <!-- Certification 3 -->
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl shadow-lg p-8 card-hover">
+      <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl shadow-lg p-8 card-hover max-w-sm mx-auto">
         <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
           <i class="fab fa-microsoft text-white text-2xl"></i>
         </div>
@@ -767,7 +784,7 @@
       
       <div class="grid md:grid-cols-2 gap-12 items-start justify-center">
         <!-- Contact Info -->
-        <div class="space-y-8">
+        <div class="space-y-8 text-center">
           <div>
             <h4 class="text-2xl font-bold mb-6">Get in Touch</h4>
             <div class="space-y-4">
@@ -839,230 +856,4 @@
               <input type="text" 
                      name="name" 
                      placeholder="Enter your full name" 
-                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition" 
-                     required>
-            </div>
-            <div class="form-group">
-              <label class="block text-sm font-medium mb-2">Email Address</label>
-              <input type="email" 
-                     name="email" 
-                     placeholder="your.email@example.com" 
-                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition" 
-                     required>
-            </div>
-            <div class="form-group">
-              <label class="block text-sm font-medium mb-2">Project Type</label>
-              <select name="project_type" 
-                      class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition">
-                <option value="dashboard">Dashboard Development</option>
-                <option value="analysis">Data Analysis</option>
-                <option value="consultation">Consultation</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="block text-sm font-medium mb-2">Message</label>
-              <textarea name="message" 
-                        placeholder="Tell me about your project, goals, and how I can help..." 
-                        class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition resize-none" 
-                        rows="5" 
-                        required></textarea>
-            </div>
-            <button type="submit" 
-                    class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center">
-              <i class="fas fa-paper-plane mr-2"></i>Send Message
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Enhanced Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800 text-center">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid md:grid-cols-3 gap-8 mb-8 justify-center">
-        <div>
-          <h3 class="text-xl font-bold text-white mb-4">Adelakun Tomisin Michael</h3>
-          <p class="text-gray-400 mb-4">
-            Passionate Data Analyst transforming complex data into actionable business insights.
-          </p>
-          <div class="flex space-x-4 justify-center">
-            <a href="https://www.linkedin.com/in/tomisin-adelakun-aa75a9212" 
-               target="_blank" 
-               class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition">
-              <i class="fab fa-linkedin text-white"></i>
-            </a>
-            <a href="https://github.com/adelakul" 
-               target="_blank" 
-               class="w-10 h-10 bg-gray-700 rounded-lg flex items-center justify-center hover:bg-gray-600 transition">
-              <i class="fab fa-github text-white"></i>
-            </a>
-            <a href="mailto:michealtom2001@gmail.com" 
-               class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition">
-              <i class="fas fa-envelope text-white"></i>
-            </a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
-          <ul class="space-y-2 text-center">
-            <li><a href="#about" class="hover:text-white transition">About Me</a></li>
-            <li><a href="#projects" class="hover:text-white transition">Projects</a></li>
-            <li><a href="#skills" class="hover:text-white transition">Skills</a></li>
-            <li><a href="#certifications" class="hover:text-white transition">Certifications</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-lg font-semibold text-white mb-4">Services</h4>
-          <ul class="space-y-2 text-center">
-            <li class="text-gray-400">Dashboard Development</li>
-            <li class="text-gray-400">Data Analysis</li>
-            <li class="text-gray-400">Business Intelligence</li>
-            <li class="text-gray-400">Data Consultation</li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 pt-8">
-        <p class="text-gray-400">
-          © 2025 Adelakun Tomisin Michael. All rights reserved. Built with ❤️ and modern web technologies.
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Enhanced JavaScript -->
-  <script>
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      const icon = mobileMenuBtn.querySelector('i');
-      icon.classList.toggle('fa-bars');
-      icon.classList.toggle('fa-times');
-    });
-
-    // Smooth Scrolling with Offset for Fixed Header
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const targetPosition = target.offsetTop - headerHeight;
-        
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-        
-        // Close mobile menu if open
-        mobileMenu.classList.add('hidden');
-        const icon = mobileMenuBtn.querySelector('i');
-        icon.classList.add('fa-bars');
-        icon.classList.remove('fa-times');
-      });
-    });
-
-    // Enhanced Carousel
-    const carousel = document.querySelector('.carousel');
-    const prevBtn = document.querySelector('.carousel-prev');
-    const nextBtn = document.querySelector('.carousel-next');
-    let scrollAmount = 0;
-
-    if (carousel && prevBtn && nextBtn) {
-      const cardWidth = 350 + 32; // card width + gap
-      
-      nextBtn.addEventListener('click', () => {
-        scrollAmount += cardWidth;
-        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-        if (scrollAmount >= maxScroll) {
-          scrollAmount = maxScroll;
-        }
-        carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-      });
-
-      prevBtn.addEventListener('click', () => {
-        scrollAmount -= cardWidth;
-        if (scrollAmount < 0) {
-          scrollAmount = 0;
-        }
-        carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-      });
-    }
-
-    // Create Floating Particles
-    function createParticles() {
-      const particlesContainer = document.querySelectorAll('.particles');
-      
-      particlesContainer.forEach(container => {
-        for (let i = 0; i < 15; i++) {
-          const particle = document.createElement('div');
-          particle.classList.add('particle');
-          particle.style.width = Math.random() * 8 + 4 + 'px';
-          particle.style.height = particle.style.width;
-          particle.style.left = Math.random() * 100 + '%';
-          particle.style.top = Math.random() * 100 + '%';
-          particle.style.animationDelay = Math.random() * 5 + 's';
-          container.appendChild(particle);
-        }
-      });
-    }
-
-    createParticles();
-
-    // Counter Animation
-    const counters = document.querySelectorAll('[data-count]');
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-count');
-        let count = 0;
-        const interval = setInterval(() => {
-          if (count < target) {
-            count++;
-            counter.textContent = count;
-          } else {
-            clearInterval(interval);
-          }
-        }, 50);
-      };
-
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            updateCount();
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      observer.observe(counter);
-    });
-
-    // Read More Toggle
-    document.querySelectorAll('.read-more').forEach(button => {
-      button.addEventListener('click', () => {
-        const card = button.closest('.blog-card');
-        card.classList.toggle('expanded');
-        button.querySelector('i').classList.toggle('rotate-90');
-      });
-    });
-
-    // Progress Bar Animation
-    const progressBars = document.querySelectorAll('.progress-bar');
-    progressBars.forEach(bar => {
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            bar.style.width = bar.style.width || bar.getAttribute('style').match(/width: (\d+)%/)[1] + '%';
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      observer.observe(bar);
-    });
-  </script>
-</body>
-</html>
+                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text
