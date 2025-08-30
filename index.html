@@ -102,6 +102,62 @@
       transition: width 1s ease-in-out;
     }
     
+    /* Particle Effect Container */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      animation: particles 10s linear infinite;
+    }
+    
+    @keyframes particles {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(200px); }
+    }
+    
+    /* Enhanced Contact Form Styles */
+    .form-group {
+      position: relative;
+    }
+    
+    .form-input {
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(59, 130, 246, 0.8);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .contact-item {
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-2px);
+    }
+    
+    .stat-card {
+      transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: scale(1.05);
+    }
+    
     /* Mobile Responsive Improvements */
     @media (max-width: 768px) {
       .carousel-prev,
@@ -138,233 +194,133 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    
-    /* Particle Effect Container */
-    .particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      top: 0;
-      left: 0;
-    }
-    
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      animation: float-particle 8s infinite ease-in-out;
-    }
-    
-    @keyframes float-particle {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-    }
-    
-    /* Enhanced Contact Form */
-    .form-group {
-      position: relative;
-    }
-    
-    .form-input {
-      transition: all 0.3s ease;
-    }
-    
-    .form-input:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans smooth-scroll">
-  <!-- Enhanced Header with Glass Effect -->
-  <header class="glass fixed w-full top-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold gradient-text">Adelakun Tomisin Michael</h1>
-      <nav class="hidden md:flex space-x-6">
-        <a href="#home" class="hover:text-blue-600 transition duration-300 relative group">
-          Home
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#about" class="hover:text-blue-600 transition duration-300 relative group">
-          About
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#projects" class="hover:text-blue-600 transition duration-300 relative group">
-          Projects
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#blog" class="hover:text-blue-600 transition duration-300 relative group">
-          Blog
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#skills" class="hover:text-blue-600 transition duration-300 relative group">
-          Skills
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-        <a href="#contact" class="hover:text-blue-600 transition duration-300 relative group">
-          Contact
-          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-        </a>
-      </nav>
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden text-2xl" id="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-    <!-- Mobile Menu -->
-    <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
-      <div class="px-4 py-2 space-y-2">
-        <a href="#home" class="block py-2 hover:text-blue-600 transition">Home</a>
-        <a href="#about" class="block py-2 hover:text-blue-600 transition">About</a>
-        <a href="#projects" class="block py-2 hover:text-blue-600 transition">Projects</a>
-        <a href="#blog" class="block py-2 hover:text-blue-600 transition">Blog</a>
-        <a href="#skills" class="block py-2 hover:text-blue-600 transition">Skills</a>
-        <a href="#contact" class="block py-2 hover:text-blue-600 transition">Contact</a>
+<body class="smooth-scroll bg-gray-50">
+  
+  <!-- Navigation -->
+  <nav class="fixed w-full top-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <div class="flex items-center">
+          <span class="text-2xl font-bold gradient-text">ATM</span>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" class="text-gray-700 hover:text-blue-600 transition font-medium">Home</a>
+          <a href="#about" class="text-gray-700 hover:text-blue-600 transition font-medium">About</a>
+          <a href="#projects" class="text-gray-700 hover:text-blue-600 transition font-medium">Projects</a>
+          <a href="#skills" class="text-gray-700 hover:text-blue-600 transition font-medium">Skills</a>
+          <a href="#contact" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact</a>
+        </div>
+        <div class="md:hidden">
+          <button class="mobile-menu-btn text-gray-700">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Enhanced Hero Section with Animated Background -->
-  <section id="home" class="relative py-20 animated-bg text-white min-h-screen flex items-center">
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen animated-bg flex items-center justify-center relative overflow-hidden">
     <div class="particles"></div>
-    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between relative z-10">
-      <!-- Left Side: Enhanced Text -->
-      <div class="md:w-1/2 text-left">
-        <div class="mb-4">
-          <span class="inline-block px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium glass">
-            👋 Welcome to my portfolio
-          </span>
-        </div>
-        <h2 class="hero-text text-5xl md:text-6xl font-bold mb-6 leading-tight">
-          Hi, I'm <span class="relative">
-            Adelakun Tomisin Michael
-            <svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 300 12" fill="none">
-              <path d="M5 6C5 6 50 1 150 6C250 11 295 6 295 6" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-          </span>
-        </h2>
-        <p class="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-          Passionate <span class="font-semibold text-yellow-300">Data Analyst</span> transforming complex data into 
-          <span class="font-semibold text-yellow-300">actionable insights</span> using Power BI, SQL, and Python.
+    <div class="text-center z-10 max-w-4xl mx-auto px-4">
+      <div class="float">
+        <img src="https://via.placeholder.com/200x200/667eea/ffffff?text=ATM" alt="Adelakun Tomisin Michael" 
+             class="w-48 h-48 rounded-full mx-auto mb-8 border-4 border-white shadow-2xl">
+      </div>
+      <h1 class="hero-text text-6xl font-bold text-white mb-6">
+        Adelakun Tomisin Michael
+      </h1>
+      <p class="text-2xl text-white mb-8 opacity-90">
+        Data Analyst | Turning Data into Insights
+      </p>
+      <div class="flex justify-center space-x-4">
+        <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition card-hover">
+          View My Work
+        </button>
+        <button class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition">
+          Contact Me
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">About Me</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Passionate data analyst with expertise in transforming complex datasets into actionable business insights.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#projects" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition duration-300 transform hover:scale-105 shadow-lg">
-            <i class="fas fa-rocket mr-2"></i>Explore My Work
-          </a>
-          <a href="#contact" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition duration-300 transform hover:scale-105">
-            <i class="fas fa-envelope mr-2"></i>Get In Touch
-          </a>
-        </div>
-        <!-- Stats Section -->
-        <div class="flex flex-wrap gap-8 mt-12 justify-center">
-          <div class="text-center">
-            <div class="text-3xl font-bold" data-count="15">0</div>
-            <div class="text-sm opacity-75">Projects Completed</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold" data-count="3">0</div>
-            <div class="text-sm opacity-75">Certifications</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold" data-count="2">0</div>
-            <div class="text-sm opacity-75">Years Experience</div>
-          </div>
-        </div>
       </div>
-      <!-- Right Side: Enhanced Image with Effects -->
-      <div class="md:w-1/2 flex justify-center mt-8 md:mt-0">
-        <div class="relative">
-          <div class="w-72 h-72 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-1 float">
-            <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745834758/profile-pic.jpg_ofvwdb.jpg" 
-                 alt="Adelakun Tomisin Michael" 
-                 class="w-full h-full rounded-full object-cover border-4 border-white shadow-2xl">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold mb-6">My Journey</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            With over a year of experience in data analysis, I specialize in using Power BI, SQL, and Python 
+            to help organizations make data-driven decisions. My passion lies in uncovering hidden patterns 
+            and presenting them in clear, actionable formats.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-chart-bar text-blue-600"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Data Visualization</h4>
+                <p class="text-gray-600">Creating compelling visual stories</p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                <i class="fas fa-database text-green-600"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Database Management</h4>
+                <p class="text-gray-600">Efficient data processing & analysis</p>
+              </div>
+            </div>
           </div>
-          <!-- Decorative Elements -->
-          <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full opacity-80 animate-pulse"></div>
-          <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-pink-400 rounded-full opacity-60 animate-bounce"></div>
+        </div>
+        <div class="glass p-8 rounded-2xl">
+          <h3 class="text-xl font-bold mb-6">Key Achievements</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium">Power BI</span>
+                <span class="text-sm font-medium">90%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="progress-bar bg-blue-600 h-2 rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium">SQL</span>
+                <span class="text-sm font-medium">85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="progress-bar bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium">Python</span>
+                <span class="text-sm font-medium">80%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="progress-bar bg-purple-600 h-2 rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Enhanced About Section -->
-  <section id="about" class="max-w-7xl mx-auto px-4 py-20 text-center">
-    <h3 class="text-4xl font-bold mb-4 gradient-text">About Me</h3>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      Discover my journey, passion, and the drive behind my data analytics career
-    </p>
-    <div class="flex flex-col lg:flex-row items-center gap-12 justify-center">
-      <div class="lg:w-1/3">
-        <div class="relative group">
-          <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745834556/image_fo_about_me_rgyrku.jpg" 
-               alt="About Me" 
-               class="w-full h-80 rounded-2xl shadow-xl object-cover transition duration-300 group-hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-t from-blue-600 to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300 rounded-2xl"></div>
-        </div>
-      </div>
-      <div class="lg:w-2/3 space-y-6 text-center">
-        <div class="space-y-4">
-          <p class="text-lg leading-relaxed text-gray-700">
-            I'm a dedicated data analyst with a passion for uncovering stories hidden in data. My journey began with a curiosity for numbers, leading me to master tools like <span class="font-semibold text-blue-600">Power BI</span>, <span class="font-semibold text-blue-600">SQL</span>, and <span class="font-semibold text-blue-600">Python</span>.
-          </p>
-          <p class="text-lg leading-relaxed text-gray-700">
-            When I'm not analyzing data, you can find me exploring new datasets or sharing insights on my blog. My goal is to help businesses make data-driven decisions that drive impact.
-          </p>
-        </div>
-        
-        <!-- Key Strengths -->
-        <div class="grid md:grid-cols-2 gap-6 mt-8 mx-auto max-w-3xl">
-          <div class="flex items-start space-x-3 justify-center">
-            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-chart-line text-blue-600"></i>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900">Data Visualization</h4>
-              <p class="text-gray-600 text-sm">Creating compelling dashboards that tell data stories</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3 justify-center">
-            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-database text-green-600"></i>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900">Data Management</h4>
-              <p class="text-gray-600 text-sm">Efficient data extraction and transformation</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3 justify-center">
-            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-brain text-purple-600"></i>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900">Analytical Thinking</h4>
-              <p class="text-gray-600 text-sm">Problem-solving with data-driven approaches</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3 justify-center">
-            <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-lightbulb text-yellow-600"></i>
-            </div>
-            <div>
-              <h4 class="font-semibold text-gray-900">Business Insights</h4>
-              <p class="text-gray-600 text-sm">Translating data into actionable business strategies</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="pt-6">
-          <a href="https://drive.google.com/uc?export=download&id=1BzCY5OoUZ3_wLZjnTUNLQH4mBQG-KaWW" 
-             download 
-             class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105 shadow-lg">
-            <i class="fas fa-download mr-2"></i>Download Resume
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Enhanced Projects Section -->
+    <!-- Enhanced Projects Section -->
   <section id="projects" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 text-center">
     <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-4xl font-bold mb-4 gradient-text">Featured Projects</h3>
@@ -501,320 +457,96 @@
     </div>
   </section>
 
-  <!-- Enhanced Blog Section -->
-  <section id="blog" class="max-w-7xl mx-auto px-4 py-20 text-center">
-    <h3 class="text-4xl font-bold mb-4 gradient-text">Latest Insights</h3>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      Sharing knowledge and insights from my data analytics journey
-    </p>
-    <div class="grid gap-8 md:grid-cols-2 justify-center">
-      <!-- Enhanced Blog Post 1 -->
-      <article class="blog-card card-hover bg-white rounded-3xl shadow-lg p-8 max-w-md mx-auto">
-        <div class="flex items-center mb-4 justify-center">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
-            <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
-          </div>
-          <div>
-            <h4 class="text-xl font-bold text-gray-900">Creating Impactful Dashboards with Power BI</h4>
-            <p class="text-sm text-gray-500">5 min read • Data Visualization</p>
-          </div>
-        </div>
-        <div class="relative mb-6 overflow-hidden rounded-xl">
-          <img src="https://images.unsplash.com/photo-1551288049-b5f3c6c514d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" 
-               alt="Power BI Dashboard" 
-               class="w-full h-48 object-cover transition duration-300 hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        </div>
-        <p class="text-gray-600 mb-4 leading-relaxed">Learn how to design user-friendly dashboards that communicate insights effectively and drive business decisions.</p>
-        <div class="blog-content">
-          <p class="text-gray-700 mb-4">Power BI is a powerful tool for creating dashboards that transform raw data into meaningful insights. Whether you're a data analyst, business manager, or executive, a well-designed dashboard can help you make informed decisions quickly. Here are some key strategies:</p>
-          <h5 class="text-lg font-semibold mb-3 text-gray-900">
-            <i class="fas fa-users text-blue-600 mr-2"></i>1. Understand Your Audience
-          </h5>
-          <p class="text-gray-700 mb-4">Know who will use the dashboard—executives need high-level KPIs, while analysts need detailed data. Tailor your visuals accordingly.</p>
-          <h5 class="text-lg font-semibold mb-3 text-gray-900">
-            <i class="fas fa-minimize text-green-600 mr-2"></i>2. Keep It Simple
-          </h5>
-          <p class="text-gray-700 mb-4">Avoid clutter with minimal colors, clear fonts, and focus on key metrics like revenue or growth rate.</p>
-          <h5 class="text-lg font-semibold mb-3 text-gray-900">
-            <i class="fas fa-mouse-pointer text-purple-600 mr-2"></i>3. Use Interactive Features
-          </h5>
-          <p class="text-gray-700 mb-4">Leverage slicers and filters to let users explore data dynamically, enhancing usability.</p>
-          <p class="text-gray-700 mb-4">By following these tips, you can create dashboards that are both visually appealing and effective. Posted on May 28, 2025 by Adelakun Tomisin Michael.</p>
-        </div>
-        <div class="flex items-center justify-between mt-6">
-          <span class="read-more text-blue-600 hover:text-blue-800 cursor-pointer font-medium transition flex items-center">
-            <span class="mr-2">Read More</span>
-            <i class="fas fa-arrow-right transition-transform"></i>
-          </span>
-          <div class="flex space-x-3">
-            <button class="text-gray-400 hover:text-red-500 transition" title="Like">
-              <i class="fas fa-heart"></i>
-            </button>
-            <button class="text-gray-400 hover:text-blue-500 transition" title="Share">
-              <i class="fas fa-share"></i>
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Enhanced Blog Post 2 -->
-      <article class="blog-card card-hover bg-white rounded-3xl shadow-lg p-8 max-w-md mx-auto">
-        <div class="flex items-center mb-4 justify-center">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
-            <i class="fas fa-database text-green-600 text-xl"></i>
-          </div>
-          <div>
-            <h4 class="text-xl font-bold text-gray-900">SQL Tips for Data Analysts</h4>
-            <p class="text-sm text-gray-500">7 min read • Database Management</p>
-          </div>
-        </div>
-        <div class="relative mb-6 overflow-hidden rounded-xl">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" 
-               alt="SQL Database" 
-               class="w-full h-48 object-cover transition duration-300 hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        </div>
-        <p class="text-gray-600 mb-4 leading-relaxed">Discover advanced SQL techniques to optimize your data queries and improve performance.</p>
-        <div class="blog-content">
-          <p class="text-gray-700 mb-4">SQL is essential for data analysts to extract and analyze data efficiently. Here are some advanced tips to optimize your queries:</p>
-          <h5 class="text-lg font-semibold mb-3 text-gray-900">
-            <i class="fas fa-bolt text-yellow-600 mr-2"></i>1. Use Indexes
-          </h5>
-          <p class="text-gray-700 mb-4">Create indexes on frequently queried columns (e.g., `CREATE INDEX idx_customer_id ON customers(customer_id);`) to speed up retrieval.</p>
-          <h5 class="text-lg font-semibold mb-3 text-gray-900">
-            <i class="fas fa-filter text-red-600 mr-2"></i>2. Avoid SELECT *
-          </h5>
-          <p class="text-gray-700 mb-4">Specify needed columns (e.g., `SELECT first_name, last_name FROM customers`) to reduce data transfer.</p>
-          <h5 class="text-lg font-semibold mb-3 text-gray-900">
-            <i class="fas fa-window-maximize text-blue-600 mr-2"></i>3. Leverage Window Functions
-          </h5>
-          <p class="text-gray-700 mb-4">Use functions like `SUM() OVER()` for running totals or rankings without collapsing data.</p>
-          <p class="text-gray-700 mb-4">Mastering these techniques can enhance your efficiency. Posted on May 28, 2025 by Adelakun Tomisin Michael.</p>
-        </div>
-        <div class="flex items-center justify-between mt-6">
-          <span class="read-more text-blue-600 hover:text-blue-800 cursor-pointer font-medium transition flex items-center">
-            <span class="mr-2">Read More</span>
-            <i class="fas fa-arrow-right transition-transform"></i>
-          </span>
-          <div class="flex space-x-3">
-            <button class="text-gray-400 hover:text-red-500 transition" title="Like">
-              <i class="fas fa-heart"></i>
-            </button>
-            <button class="text-gray-400 hover:text-blue-500 transition" title="Share">
-              <i class="fas fa-share"></i>
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Enhanced Skills Section -->
-  <section id="skills" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 text-center">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-4xl font-bold mb-4 gradient-text">Technical Skills</h3>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-        A comprehensive toolkit for modern data analysis and business intelligence
-      </p>
-      
-      <!-- Skills Categories -->
-      <div class="grid md:grid-cols-3 gap-8 mb-12 justify-center">
-        <!-- Data Visualization -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover max-w-xs mx-auto">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-chart-pie text-blue-600 text-xl"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-4 text-gray-900">Data Visualization</h4>
-          <div class="space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="text-gray-700">Power BI</span>
-              <span class="text-blue-600 font-semibold">95%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 95%"></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Database Management -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover max-w-xs mx-auto">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-database text-green-600 text-xl"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-4 text-gray-900">Database Management</h4>
-          <div class="space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="text-gray-700">SQL</span>
-              <span class="text-green-600 font-semibold">90%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-green-600 h-2 rounded-full progress-bar" style="width: 90%"></div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Programming -->
-        <div class="bg-white rounded-2xl p-6 shadow-lg card-hover max-w-xs mx-auto">
-          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <i class="fas fa-code text-purple-600 text-xl"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-4 text-gray-900">Programming</h4>
-          <div class="space-y-3">
-            <div class="flex justify-between items-center">
-              <span class="text-gray-700">Python</span>
-              <span class="text-purple-600 font-semibold">85%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-purple-600 h-2 rounded-full progress-bar" style="width: 85%"></div>
-            </div>
-          </div>
-      </div>
-      
-      <!-- Skills Tags -->
-      <div class="flex flex-wrap gap-4 justify-center">
-        <span class="skill-badge bg-blue-100 text-blue-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-chart-bar mr-2"></i>Power BI
-        </span>
-        <span class="skill-badge bg-green-100 text-green-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-database mr-2"></i>SQL
-        </span>
-        <span class="skill-badge bg-purple-100 text-purple-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-tools mr-2"></i>SSMA
-        </span>
-        <span class="skill-badge bg-blue-100 text-blue-700 px-6 py-3 rounded-full font-medium">
-          <i class="fab fa-docker mr-2"></i>Docker
-        </span>
-        <span class="skill-badge bg-red-100 text-red-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-server mr-2"></i>SSMS
-        </span>
-        <span class="skill-badge bg-blue-100 text-blue-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-terminal mr-2"></i>PowerShell
-        </span>
-        <span class="skill-badge bg-yellow-100 text-yellow-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-file-excel mr-2"></i>Excel
-        </span>
-        <span class="skill-badge bg-purple-100 text-purple-700 px-6 py-3 rounded-full font-medium">
-          <i class="fab fa-python mr-2"></i>Python
-        </span>
-        <span class="skill-badge bg-red-100 text-red-700 px-6 py-3 rounded-full font-medium">
-          <i class="fas fa-exchange-alt mr-2"></i>SSIS
-        </span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Enhanced Certifications Section -->
-  <section id="certifications" class="max-w-7xl mx-auto px-4 py-20 bg-white text-center">
-    <h3 class="text-4xl font-bold mb-4 gradient-text">Certifications</h3>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      Continuous learning and professional development in data analytics
-    </p>
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 justify-center">
-      <!-- Certification 1 -->
-      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl shadow-lg p-8 card-hover max-w-sm mx-auto">
-        <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-          <i class="fas fa-certificate text-white text-2xl"></i>
-        </div>
-        <h4 class="text-xl font-bold mb-3 text-center text-gray-900">Data Analytics - Microsoft Power BI Certified</h4>
-        <p class="text-center text-gray-600 mb-2 font-semibold">GoMyCode</p>
-        <p class="text-sm text-gray-600 mb-6 text-center">
-          Completed 8th Mar 2025 • Advanced data analysis methodologies and Power BI tools for data visualization and reporting.
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text mb-4">Skills & Technologies</h2>
+        <p class="text-xl text-gray-600">
+          Tools and technologies I use to bring data to life
         </p>
-        <div class="text-center">
-          <a href="https://diploma.gomycode.app/?id=31741262445554980" 
-             target="_blank" 
-             class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
-            <i class="fas fa-external-link-alt mr-2"></i>View Certificate
-          </a>
-        </div>
       </div>
-      
-      <!-- Certification 2 -->
-      <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-3xl shadow-lg p-8 card-hover max-w-sm mx-auto">
-        <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-          <i class="fab fa-google text-white text-2xl"></i>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="skill-badge bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-2xl text-center">
+          <i class="fas fa-chart-line text-3xl mb-4"></i>
+          <h3 class="text-lg font-bold">Power BI</h3>
         </div>
-        <h4 class="text-xl font-bold mb-3 text-center text-gray-900">Google Data Analytics Certificate</h4>
-        <p class="text-center text-gray-600 mb-2 font-semibold">Google</p>
-        <p class="text-sm text-gray-600 mb-6 text-center">
-          Completed 2025 • Comprehensive coverage of data analysis fundamentals and industry-standard tools.
-        </p>
-        <div class="text-center">
-          <a href="https://skillshop.credential.net/df67e802-bf4e-4a7b-8bfc-1a9e5b5140cf#acc.3CHRIc2A" 
-             target="_blank" 
-             class="inline-flex items-center text-green-600 hover:text-green-800 font-medium transition">
-            <i class="fas fa-external-link-alt mr-2"></i>View Certificate
-          </a>
+        <div class="skill-badge bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-2xl text-center">
+          <i class="fas fa-database text-3xl mb-4"></i>
+          <h3 class="text-lg font-bold">SQL</h3>
         </div>
-      </div>
-      
-      <!-- Certification 3 -->
-      <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-3xl shadow-lg p-8 card-hover max-w-sm mx-auto">
-        <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6 mx-auto">
-          <i class="fab fa-microsoft text-white text-2xl"></i>
+        <div class="skill-badge bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 rounded-2xl text-center">
+          <i class="fab fa-python text-3xl mb-4"></i>
+          <h3 class="text-lg font-bold">Python</h3>
         </div>
-        <h4 class="text-xl font-bold mb-3 text-center text-gray-900">Microsoft Certified: Power BI Data Analyst</h4>
-        <p class="text-center text-gray-600 mb-2 font-semibold">Microsoft</p>
-        <p class="text-sm text-gray-600 mb-6 text-center">
-          Earned 2025 • Demonstrating advanced expertise in Power BI and data analysis techniques.
-        </p>
-        <div class="text-center">
-          <span class="inline-flex items-center text-purple-600 font-medium">
-            <i class="fas fa-clock mr-2"></i>Certificate in Progress
-          </span>
+        <div class="skill-badge bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-2xl text-center">
+          <i class="fas fa-file-excel text-3xl mb-4"></i>
+          <h3 class="text-lg font-bold">Excel</h3>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Enhanced Contact Section -->
-  <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white text-center relative overflow-hidden">
+  <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white relative overflow-hidden">
     <div class="absolute inset-0 opacity-10">
       <div class="particles"></div>
     </div>
-    <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <div class="mb-12">
-        <h3 class="text-4xl font-bold mb-4">Let's Connect & Collaborate</h3>
-        <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+    
+    <div class="max-w-6xl mx-auto px-4 relative z-10">
+      <!-- Header Section - Centered -->
+      <div class="text-center mb-16">
+        <h3 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          Let's Connect & Collaborate
+        </h3>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
           Ready to turn your data into actionable insights? Let's discuss how we can work together to drive your business forward.
         </p>
       </div>
       
-      <div class="grid md:grid-cols-2 gap-12 items-start justify-center">
-        <!-- Contact Info -->
-        <div class="space-y-8 text-center">
-          <div>
-            <h4 class="text-2xl font-bold mb-6">Get in Touch</h4>
-            <div class="space-y-4">
-              <div class="flex items-center space-x-4 justify-center">
-                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <i class="fas fa-envelope text-white"></i>
+      <!-- Main Content Grid -->
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        
+        <!-- Left Column - Contact Info & Stats -->
+        <div class="space-y-8">
+          <!-- Contact Information -->
+          <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
+            <h4 class="text-3xl font-bold mb-8 text-center">Get in Touch</h4>
+            
+            <div class="space-y-6">
+              <!-- Email -->
+              <div class="contact-item flex items-center space-x-4 p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fas fa-envelope text-white text-lg"></i>
                 </div>
-                <div>
-                  <p class="font-semibold">Email</p>
-                  <a href="mailto:michealtom2001@gmail.com" class="text-blue-300 hover:text-blue-200 transition">
+                <div class="flex-1">
+                  <p class="font-semibold text-lg">Email</p>
+                  <a href="mailto:michealtom2001@gmail.com" class="text-blue-300 hover:text-blue-200 transition break-all">
                     michealtom2001@gmail.com
                   </a>
                 </div>
               </div>
-              <div class="flex items-center space-x-4 justify-center">
-                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <i class="fab fa-linkedin text-white"></i>
+              
+              <!-- LinkedIn -->
+              <div class="contact-item flex items-center space-x-4 p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fab fa-linkedin text-white text-lg"></i>
                 </div>
-                <div>
-                  <p class="font-semibold">LinkedIn</p>
+                <div class="flex-1">
+                  <p class="font-semibold text-lg">LinkedIn</p>
                   <a href="https://www.linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="text-blue-300 hover:text-blue-200 transition">
                     Connect with me
                   </a>
                 </div>
               </div>
-              <div class="flex items-center space-x-4 justify-center">
-                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <i class="fab fa-github text-white"></i>
+              
+              <!-- GitHub -->
+              <div class="contact-item flex items-center space-x-4 p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="w-14 h-14 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <i class="fab fa-github text-white text-lg"></i>
                 </div>
-                <div>
-                  <p class="font-semibold">GitHub</p>
+                <div class="flex-1">
+                  <p class="font-semibold text-lg">GitHub</p>
                   <a href="https://github.com/adelakul" target="_blank" class="text-blue-300 hover:text-blue-200 transition">
                     View my repositories
                   </a>
@@ -824,35 +556,136 @@
           </div>
           
           <!-- Quick Stats -->
-          <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6">
-            <h5 class="text-lg font-semibold mb-4">Why Work With Me?</h5>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="text-center">
-                <div class="text-2xl font-bold text-blue-300">15+</div>
-                <div class="text-sm text-gray-300">Projects</div>
+          <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
+            <h5 class="text-2xl font-bold mb-8 text-center">Why Work With Me?</h5>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="text-3xl font-bold text-blue-400 mb-2">4+</div>
+                <div class="text-gray-300 font-medium">Projects</div>
               </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-green-300">3</div>
-                <div class="text-sm text-gray-300">Certifications</div>
+              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="text-3xl font-bold text-green-400 mb-2">3</div>
+                <div class="text-gray-300 font-medium">Certifications</div>
               </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-yellow-300">2+</div>
-                <div class="text-sm text-gray-300">Years Experience</div>
+              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="text-3xl font-bold text-yellow-400 mb-2">1+</div>
+                <div class="text-gray-300 font-medium">Years Experience</div>
               </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-purple-300">24h</div>
-                <div class="text-sm text-gray-300">Response Time</div>
+              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
+                <div class="text-3xl font-bold text-purple-400 mb-2">24h</div>
+                <div class="text-gray-300 font-medium">Response Time</div>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Contact Form -->
+        <!-- Right Column - Contact Form -->
         <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
+          <h4 class="text-3xl font-bold mb-8 text-center">Send a Message</h4>
+          
           <form action="https://formspree.io/f/xwpopprw" method="POST" class="space-y-6">
             <div class="form-group">
-              <label class="block text-sm font-medium mb-2">Your Name</label>
+              <label class="block text-sm font-semibold mb-3 text-gray-300">Your Name</label>
               <input type="text" 
                      name="name" 
                      placeholder="Enter your full name" 
-                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text
+                     required
+                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400">
+            </div>
+            
+            <div class="form-group">
+              <label class="block text-sm font-semibold mb-3 text-gray-300">Email Address</label>
+              <input type="email" 
+                     name="email" 
+                     placeholder="your.email@example.com" 
+                     required
+                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400">
+            </div>
+            
+            <div class="form-group">
+              <label class="block text-sm font-semibold mb-3 text-gray-300">Subject</label>
+              <input type="text" 
+                     name="subject" 
+                     placeholder="What's this about?" 
+                     required
+                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400">
+            </div>
+            
+            <div class="form-group">
+              <label class="block text-sm font-semibold mb-3 text-gray-300">Message</label>
+              <textarea name="message" 
+                        rows="5" 
+                        placeholder="Tell me about your project or how I can help you..."
+                        required
+                        class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400 resize-none"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-4 px-8 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+              <i class="fas fa-paper-plane mr-2"></i>
+              Send Message
+            </button>
+          </form>
+          
+          <div class="mt-8 p-4 bg-green-500 bg-opacity-20 rounded-xl border border-green-400 border-opacity-30">
+            <div class="flex items-center space-x-2 text-green-300">
+              <i class="fas fa-check-circle"></i>
+              <span class="text-sm font-medium">I typically respond within 24 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="flex justify-center space-x-6 mb-8">
+          <a href="#" class="text-gray-400 hover:text-white transition">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition">
+            <i class="fab fa-github text-2xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition">
+            <i class="fab fa-twitter text-2xl"></i>
+          </a>
+        </div>
+        <p class="text-gray-400">
+          © 2024 Adelakun Tomisin Michael. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('nav');
+      
+      mobileMenuBtn?.addEventListener('click', function() {
+        nav.classList.toggle('mobile-open');
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Animate progress bars on scroll
+      const progressBars = document.querySelectorAll('.progress-bar');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bar
