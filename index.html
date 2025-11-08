@@ -2,918 +2,182 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Data Analyst Portfolio of Adelakun Tomisin Michael, showcasing projects, skills, and insights in Power BI, SQL, and Python." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Adelakun Tomisin Michael - Data Analyst Portfolio</title>
+  <meta name="description" content="Data Analyst Portfolio of Adelakun Tomisin Michael | Power BI, SQL, Python, ETL, Forecasting"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <style>
-    .smooth-scroll {
-      scroll-behavior: smooth;
-    }
-    .carousel-item {
-      transition: transform 0.5s ease-in-out;
-    }
-    
-    /* Enhanced Glass Morphism Effect */
-    .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    /* Animated Background */
-    .animated-bg {
-      background: linear-gradient(-45deg, #667eea, #764ba2, #667eea, #f093fb);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
-    }
-    
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* Floating Animation */
-    .float {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    /* Enhanced Hover Effects */
-    .card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Skill Animation */
-    .skill-badge {
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .skill-badge::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    
-    .skill-badge:hover::before {
-      left: 100%;
-    }
-    
-    .skill-badge:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Enhanced Blog Cards */
-    .blog-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease-out, padding 0.3s ease;
-    }
-    
-    .blog-card.expanded .blog-content {
-      max-height: 1000px;
-      padding-top: 1rem;
-    }
-    
-    /* Progress Bars */
-    .progress-bar {
-      width: 0%;
-      transition: width 1s ease-in-out;
-    }
-    
-    /* Enhanced Typography */
-    .gradient-text {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    /* Particle Effect Container */
-    .particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      top: 0;
-      left: 0;
-      background-image: 
-        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
-        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-        radial-gradient(1px 1px at 130px 80px, #fff, transparent);
-      background-repeat: repeat;
-      background-size: 200px 100px;
-      animation: particles 10s linear infinite;
-    }
-    
-    @keyframes particles {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(200px); }
-    }
-    
-    /* Professional About Section Styles */
-    .professional-card {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .professional-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-    
-    .image-container {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .image-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .image-container:hover .image-overlay {
-      opacity: 1;
-    }
-    
-    .skill-highlight {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .skill-highlight::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-    
-    .skill-highlight:hover::after {
-      transform: scaleX(1);
-    }
-    
-    .professional-stats {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.95) 100%);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .stat-item {
-      transition: all 0.3s ease;
-    }
-    
-    .stat-item:hover {
-      transform: scale(1.05);
-    }
-    
-    /* Enhanced Contact Form */
-    .form-group {
-      position: relative;
-    }
-    
-    .form-input {
-      transition: all 0.3s ease;
-    }
-    
-    .form-input:focus {
-      outline: none;
-      background-color: rgba(255, 255, 255, 0.3);
-      border-color: rgba(59, 130, 246, 0.8);
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-      transform: translateY(-2px);
-    }
-    
-    .contact-item {
-      transition: all 0.3s ease;
-    }
-    
-    .contact-item:hover {
-      transform: translateY(-2px);
-    }
-    
-    .stat-card {
-      transition: all 0.3s ease;
-    }
-    
-    .stat-card:hover {
-      transform: scale(1.05);
-    }
-    
-    /* Mobile menu styles */
-    .mobile-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 1rem;
-    }
-    
-    .mobile-open .mobile-menu {
-      display: block;
-    }
-    
-    .mobile-menu a {
-      display: block;
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      color: #374151;
-      border-radius: 0.5rem;
-      margin-bottom: 0.25rem;
-      transition: all 0.2s ease;
-    }
-    
-    .mobile-menu a:hover {
-      background: rgba(59, 130, 246, 0.1);
-      color: #2563eb;
-    }
-    
-    /* Mobile Responsive Improvements */
-    @media (max-width: 768px) {
-      .carousel-prev,
-      .carousel-next {
-        display: none;
-      }
-      .hero-text {
-        font-size: 2.5rem;
-      }
-      .carousel {
-        justify-content: center;
-      }
-      .carousel-item {
-        min-width: 80%;
-      }
-      .grid-cols-2 {
-        grid-template-columns: 1fr;
-      }
-      .md:grid-cols-2 {
-        grid-template-columns: 1fr;
-      }
-      .md:grid-cols-3 {
-        grid-template-columns: 1fr;
-      }
-      .flex-col.sm:flex-row {
-        flex-direction: column;
-      }
-      .lg\:flex-row {
-        text-align: center;
-      }
-      .lg\:w-1\/3, .lg\:w-2\/3 {
-        width: 100%;
-      }
-    }
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+    body { font-family: 'JetBrains Mono', monospace; }
+    .typed-cursor { opacity: 1; font-weight: 700; animation: blink 0.7s infinite; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .skill-btn { transition: all 0.4s ease; }
+    .skill-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.4); }
   </style>
 </head>
-<body class="smooth-scroll bg-gray-50">
-  
+<body class="min-h-screen bg-fixed bg-gradient-to-br from-black via-purple-900 to-black text-white antialiased">
+
   <!-- Navigation -->
-  <nav class="fixed w-full top-0 z-50 glass">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center py-4">
-        <div class="flex items-center">
-          <span class="text-2xl font-bold gradient-text">ATM</span>
-        </div>
-        <div class="hidden md:flex space-x-8">
-          <a href="#home" class="text-gray-700 hover:text-blue-600 transition font-medium">Home</a>
-          <a href="#about" class="text-gray-700 hover:text-blue-600 transition font-medium">About</a>
-          <a href="#projects" class="text-gray-700 hover:text-blue-600 transition font-medium">Projects</a>
-          <a href="#skills" class="text-gray-700 hover:text-blue-600 transition font-medium">Skills</a>
-          <a href="#contact" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact</a>
-        </div>
-        <div class="md:hidden">
-          <button class="mobile-menu-btn text-gray-700">
-            <i class="fas fa-bars text-xl"></i>
-          </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu md:hidden">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-        </div>
+  <nav class="fixed top-0 w-full z-50 px-6 py-5 backdrop-blur-lg bg-black/30 border-b border-white/10">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-purple-400">ATM</a>
+      <div class="hidden md:flex space-x-10 text-lg">
+        <a href="#home" class="hover:text-purple-400 transition">Home</a>
+        <a href="#about" class="hover:text-purple-400 transition">About</a>
+        <a href="#skills" class="hover:text-purple-400 transition">Skills</a>
+        <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+        <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
       </div>
+      <button class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="min-h-screen animated-bg flex items-center justify-center relative overflow-hidden">
-    <div class="particles"></div>
-    <div class="text-center z-10 max-w-4xl mx-auto px-4">
-      <div class="float">
-        <img src="https://via.placeholder.com/200x200/667eea/ffffff?text=ATM" alt="Adelakun Tomisin Michael" 
-             class="w-48 h-48 rounded-full mx-auto mb-8 border-4 border-white shadow-2xl">
-      </div>
-      <h1 class="hero-text text-6xl font-bold text-white mb-6">
-        Adelakun Tomisin Michael
+  <!-- Hero -->
+  <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6">
+    <div class="reveal">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">
+        Hi, I am <span class="text-purple-400">Adelakun Tomisin Michael</span>
       </h1>
-      <p class="text-2xl text-white mb-8 opacity-90">
-        Data Analyst | Turning Data into Insights
+      <p class="text-2xl md:text-4xl mb-8">
+        I am a <span id="typed"></span>
       </p>
-      <div class="flex justify-center space-x-4">
-        <a href="#projects" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition card-hover">
-          View My Work
-        </a>
-        <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition">
-          Contact Me
-        </a>
+      <div class="flex gap-6 justify-center">
+        <a href="#projects" class="px-8 py-4 bg-purple-600 rounded-full hover:bg-purple-700 transition font-bold">View Projects</a>
+        <a href="#contact" class="px-8 py-4 border-2 border-purple-600 rounded-full hover:bg-purple-600 transition font-bold">Contact Me</a>
       </div>
     </div>
   </section>
 
-  <!-- Enhanced Professional About Section -->
-  <section id="about" class="max-w-7xl mx-auto px-4 py-20">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <h3 class="text-5xl font-bold mb-6 gradient-text">About Me</h3>
-      <p class="text-xl text-gray-600 mb-4 max-w-3xl mx-auto leading-relaxed">
-        Discover my journey, passion, and the drive behind my data analytics career
-      </p>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
-    </div>
+  <!-- About -->
+  <section id="about" class="py-32 px-6 max-w-5xl mx-auto reveal">
+    <h2 class="text-4xl md:text-6xl font-bold text-center mb-10">
+      About Me:<br>
+      <span class="text-purple-400 text-3xl md:text-5xl">
+        <span id="typed-about"></span>
+      </span>
+    </h2>
+    <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-center mt-10">
+      I'm a passionate Data Analyst who transforms raw data into actionable business insights using 
+      Power BI, SQL, Python, and advanced ETL pipelines. Currently building real-world solutions that help 
+      organizations make smarter decisions through interactive dashboards and predictive analytics.
+    </p>
+  </section>
 
-    <!-- Main Content -->
-    <div class="flex flex-col lg:flex-row items-center gap-16 justify-center">
-      <!-- Image Section -->
-      <div class="lg:w-2/5">
-        <div class="image-container relative group">
-          <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745834556/image_fo_about_me_rgyrku.jpg" 
-               alt="Adelakun Tomisin Michael - Data Analyst" 
-               class="w-full h-96 rounded-3xl shadow-2xl object-cover transition duration-500 group-hover:scale-[1.02]">
-          <div class="image-overlay rounded-3xl"></div>
-          
-          <!-- Professional Badge -->
-          <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2">
-            <div class="bg-white rounded-2xl shadow-xl px-6 py-3 border border-gray-100">
-              <div class="flex items-center space-x-3">
-                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="text-sm font-semibold text-gray-700">Available for Projects</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Content Section -->
-      <div class="lg:w-3/5 space-y-8">
-        <!-- Professional Introduction -->
-        <div class="professional-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-          <div class="space-y-6">
-            <div class="flex items-center space-x-3 mb-6">
-              <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
-                <i class="fas fa-chart-line text-white text-lg"></i>
-              </div>
-              <h4 class="text-2xl font-bold text-gray-800">Professional Background</h4>
-            </div>
-            
-            <p class="text-lg leading-relaxed text-gray-700 text-left">
-              I'm a dedicated data analyst with a passion for uncovering stories hidden in data. My journey began with a curiosity for numbers, leading me to master tools like 
-              <span class="skill-highlight font-semibold text-blue-600 cursor-pointer">Power BI</span>, 
-              <span class="skill-highlight font-semibold text-blue-600 cursor-pointer">SQL</span>, and 
-              <span class="skill-highlight font-semibold text-blue-600 cursor-pointer">Python</span>.
-            </p>
-            
-            <p class="text-lg leading-relaxed text-gray-700 text-left">
-              When I'm not analyzing data, you can find me exploring new datasets or sharing insights on my blog. My goal is to help businesses make data-driven decisions that drive impact.
-            </p>
-          </div>
-        </div>
-
-        <!-- Key Strengths -->
-        <div class="professional-card bg-white rounded-3xl p-8 shadow-lg border border-gray-100">
-          <div class="flex items-center space-x-3 mb-8">
-            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-xl flex items-center justify-center">
-              <i class="fas fa-star text-white text-lg"></i>
-            </div>
-            <h4 class="text-2xl font-bold text-gray-800">Key Strengths</h4>
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="flex items-start space-x-3">
-              <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-chart-line text-blue-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">Data Visualization</h4>
-                <p class="text-gray-600 text-sm">Creating compelling dashboards that tell data stories</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-database text-green-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">Data Management</h4>
-                <p class="text-gray-600 text-sm">Efficient data extraction and transformation</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-brain text-purple-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">Analytical Thinking</h4>
-                <p class="text-gray-600 text-sm">Problem-solving with data-driven approaches</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start space-x-3">
-              <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-lightbulb text-yellow-600"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">Business Insights</h4>
-                <p class="text-gray-600 text-sm">Translating data into actionable business strategies</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="pt-8 text-center">
-            <a href="https://drive.google.com/uc?export=download&id=1BzCY5OoUZ3_wLZjnTUNLQH4mBQG-KaWW" 
-               download 
-               class="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:to-purple-700 transition duration-300 transform hover:scale-105 shadow-lg font-semibold">
-              <i class="fas fa-download mr-2"></i>Download Resume
-            </a>
-          </div>
-        </div>
-
-        <!-- Professional Stats -->
-        <div class="professional-stats rounded-3xl p-8">
-          <h5 class="text-xl font-bold text-gray-800 mb-6 text-center">Professional Highlights</h5>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="stat-item text-center">
-              <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <i class="fas fa-project-diagram text-white text-xl"></i>
-              </div>
-              <div class="text-2xl font-bold text-blue-600 mb-1">4+</div>
-              <div class="text-sm text-gray-600 font-medium">Completed Projects</div>
-            </div>
-            
-            <div class="stat-item text-center">
-              <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <i class="fas fa-certificate text-white text-xl"></i>
-              </div>
-              <div class="text-2xl font-bold text-green-600 mb-1">3</div>
-              <div class="text-sm text-gray-600 font-medium">Certifications</div>
-            </div>
-            
-            <div class="stat-item text-center">
-              <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <i class="fas fa-clock text-white text-xl"></i>
-              </div>
-              <div class="text-2xl font-bold text-purple-600 mb-1">1+</div>
-              <div class="text-sm text-gray-600 font-medium">Years Experience</div>
-            </div>
-            
-            <div class="stat-item text-center">
-              <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <i class="fas fa-users text-white text-xl"></i>
-              </div>
-              <div class="text-2xl font-bold text-orange-600 mb-1">100%</div>
-              <div class="text-sm text-gray-600 font-medium">Client Satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Skills -->
+  <section id="skills" class="py-24 px-6 reveal">
+    <h2 class="text-4 for skills text-5xl font-bold text-center mb-16">Skills</h2>
+    <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
+      <!-- Repeat this block for each skill -->
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Power BI</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">SQL</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Python</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Excel</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Docker</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">ETL Pipelines</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Prophet</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">ARIMA</button>
+      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Git & GitHub</button>
     </div>
   </section>
 
-  <!-- Enhanced Projects Section -->
-  <section id="projects" class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 text-center">
-    <div class="max-w-7xl mx-auto px-4">
-      <h3 class="text-4xl font-bold mb-4 gradient-text">Featured Projects</h3>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-        Explore my latest work in data analysis, visualization, and business intelligence
-      </p>
-      <div class="relative">
-        <button class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-blue-600 p-3 rounded-full hover:bg-blue-50 z-10 shadow-lg transition duration-300 hover:scale-110">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="carousel flex overflow-x-auto snap-x snap-mandatory gap-8 pb-6 justify-center">
-          <!-- Enhanced Project Card 1 -->
-          <div class="carousel-item card-hover bg-white rounded-3xl shadow-lg p-8 min-w-[350px] snap-center">
-            <div class="relative mb-6 overflow-hidden rounded-xl">
-              <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" 
-                   alt="Accident Analysis Dashboard" 
-                   class="w-full h-48 object-cover transition duration-300 hover:scale-110">
-              <div class="absolute top-4 left-4">
-                <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Dashboard</span>
-              </div>
-            </div>
-            <h4 class="text-2xl font-bold mb-3 text-gray-900">Accident Analysis Dashboard</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">
-              Developed an interactive Power BI dashboard analyzing crash trends, locations, and injury severity with advanced filtering capabilities.
-            </p>
-            <div class="flex flex-wrap gap-2 mb-6 justify-center">
-              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Power BI</span>
-              <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">SQL</span>
-              <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Data Analysis</span>
-            </div>
-            <div class="flex flex-wrap gap-4 mb-6 justify-center">
-              <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" 
-                 target="_blank" 
-                 class="flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
-                <i class="fas fa-external-link-alt mr-2"></i>Live Demo
-              </a>
-              <a href="https://github.com/sample" 
-                 target="_blank" 
-                 class="flex items-center text-gray-600 hover:text-gray-800 font-medium transition">
-                <i class="fab fa-github mr-2"></i>GitHub
-              </a>
-            </div>
-            <div class="border-t pt-4">
-              <h5 class="font-semibold mb-3 text-gray-900">
-                <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Insights & Recommendations
-              </h5>
-              <a href="https://docs.google.com/presentation/d/1o3XKvAP_h0CjvIiT62OjQHfmoYmK5GZZF-JedkdvR00/edit?usp=drive_link" 
-                 target="_blank" 
-                 class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg inline-flex items-center hover:from-blue-700 hover:to-blue-800 transition duration-300 transform hover:scale-105 shadow-md">
-                <i class="fas fa-presentation mr-2"></i>View Presentation
-              </a>
-            </div>
-          </div>
+  <!-- Projects -->
+  <section id="projects" class="py-24 px-6">
+    <h2 class="text-5xl font-bold text-center mb-16">Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
 
-          <!-- Enhanced Project Card 2 -->
-          <div class="carousel-item card-hover bg-white rounded-3xl shadow-lg p-8 min-w-[350px] snap-center">
-            <div class="relative mb-6 overflow-hidden rounded-xl">
-              <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" 
-                   alt="RetailPulse ETL & Dashboard Project" 
-                   class="w-full h-48 object-cover transition duration-300 hover:scale-110">
-              <div class="absolute top-4 left-4">
-                <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">ETL Pipeline</span>
-              </div>
-            </div>
-            <h4 class="text-2xl font-bold mb-3 text-gray-900">RetailPulse: Real-Time Analytics</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">
-              A Dockerized ETL pipeline that automates data cleaning, unifies sales & customer records, and powers real-time dashboards for retail insights.
-            </p>
-            <div class="mb-4">
-              <h6 class="font-semibold text-sm text-gray-800 mb-2">Key Features:</h6>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                Config-based cleaning, SQL Server integration, dynamic schema handling, and Power BI dashboards.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 mb-6 justify-center">
-              <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Python</span>
-              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Docker</span>
-              <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">SQL Server</span>
-              <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Power BI</span>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center">
-              <a href="https://github.com/adelakul/retail-pulse" 
-                 target="_blank" 
-                 class="flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
-                <i class="fab fa-github mr-2"></i>GitHub Repo
-              </a>
-            </div>
-          </div>
-
-          <!-- Enhanced Project Card 3 -->
-          <div class="carousel-item card-hover bg-white rounded-3xl shadow-lg p-8 min-w-[350px] snap-center">
-            <div class="relative mb-6 overflow-hidden rounded-xl">
-              <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" 
-                   alt="Adidas Sales Forecasting Dashboard" 
-                   class="w-full h-48 object-cover transition duration-300 hover:scale-110">
-              <div class="absolute top-4 left-4">
-                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">ML Forecasting</span>
-              </div>
-            </div>
-            <h4 class="text-2xl font-bold mb-3 text-gray-900">Adidas Sales Forecasting</h4>
-            <p class="text-gray-600 mb-4 leading-relaxed">
-              Developed a predictive model using Python and time-series analysis to forecast future sales for Adidas US. Applied Prophet and ARIMA models.
-            </p>
-            <div class="mb-4">
-              <h6 class="font-semibold text-sm text-gray-800 mb-2">Key Features:</h6>
-              <p class="text-sm text-gray-600 leading-relaxed">
-                Forecast accuracy evaluation, CSV export, Power BI integration, model serialization.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-2 mb-6 justify-center">
-              <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Python</span>
-              <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Prophet</span>
-              <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">ARIMA</span>
-              <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Power BI</span>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-center">
-              <a href="https://github.com/adelakul/adidas-sales-forecast" 
-                 target="_blank" 
-                 class="flex items-center text-blue-600 hover:text-blue-800 font-medium transition">
-                <i class="fab fa-github mr-2"></i>GitHub Repo
-              </a>
-              <a href="https://colab.research.google.com/drive/1LSJYC7-U_MODONoZQxTpsM7ykwuk6E2w?usp=sharing" 
-                 target="_blank" 
-                 class="flex items-center text-green-600 hover:text-green-800 font-medium transition">
-                <i class="fas fa-book mr-2"></i>View Notebook
-              </a>
-            </div>
+      <!-- Project 1 -->
+      <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-2xl overflow-hidden border border-gray-700">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" alt="Accident Analysis" class="w-full h-56 object-cover">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-teal-400 mb-3">Accident Analysis Dashboard</h3>
+          <p class="text-gray-300 mb-4">Interactive Power BI dashboard analyzing road crash trends, severity, and emergency response across Nigeria.</p>
+          <p class="text-sm text-gray-400 mb-4"><strong>Stack:</strong> Power BI • SQL • DAX</p>
+          <div class="flex gap-4">
+            <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" target="_blank" class="text-teal-400 hover:underline">Live Demo →</a>
+            <a href="https://docs.google.com/presentation/d/1o3XKvAP_h0CjvIiT62OjQHfmoYmK5GZZF-JedkdvR00/edit?usp=drive_link" target="_blank" class="text-teal-400 hover:underline">Presentation</a>
           </div>
         </div>
-        <button class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-blue-600 p-3 rounded-full hover:bg-blue-50 z-10 shadow-lg transition duration-300 hover:scale-110">
-          <i class="fas fa-chevron-right"></i>
-        </button>
       </div>
+
+      <!-- Project 2 -->
+      <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-2xl overflow-hidden border border-gray-700">
+        <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" alt="RetailPulse" class="w-full h-56 object-cover">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-teal-400 mb-3">RetailPulse - Real-Time ETL</h3>
+          <p class="text-gray-300 mb-4">Dockerized ETL pipeline that cleans, merges, and feeds real-time retail data into Power BI dashboards.</p>
+          <p class="text-sm text-gray-400 mb-4"><strong>Stack:</strong> Python • Docker • SQL Server • Power BI</p>
+          <a href="https://github.com/adelakul/retail-pulse" target="_blank" class="text-teal-400 hover:underline">GitHub →</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-2xl overflow-hidden border border-gray-700">
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" alt="Adidas Forecasting" class="w-full h-56 object-cover">
+        <div class="p-8">
+          <h3 class="text-2xl font-bold text-teal-400 mb-3">Adidas Sales Forecasting</h3>
+          <p class="text-gray-300 mb-4">Time-series forecasting model using Prophet & ARIMA to predict US sales with exportable results.</p>
+          <p class="text-sm text-gray-400 mb-4"><strong>Stack:</strong> Python • Prophet • ARIMA • Power BI</p>
+          <div class="flex gap-4">
+            <a href="https://github.com/adelakul/adidas-sales-forecast" target="_blank" class="text-teal-400 hover:underline">GitHub</a>
+            <a href="https://colab.research.google.com/drive/1LSJYC7-U_MODONoZQxTpsM7ykwuk6E2w?usp=sharing" target="_blank" class="text-teal-400 hover:underline">Colab Notebook</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold gradient-text mb-4">Skills & Technologies</h2>
-        <p class="text-xl text-gray-600">
-          Tools and technologies I use to bring data to life
-        </p>
-      </div>
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="skill-badge bg-gradient-to-r from-blue-500 to-blue-600 text-white p-6 rounded-2xl text-center">
-          <i class="fas fa-chart-line text-3xl mb-4"></i>
-          <h3 class="text-lg font-bold">Power BI</h3>
-        </div>
-        <div class="skill-badge bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-2xl text-center">
-          <i class="fas fa-database text-3xl mb-4"></i>
-          <h3 class="text-lg font-bold">SQL</h3>
-        </div>
-        <div class="skill-badge bg-gradient-to-r from-purple-500 to-purple-600 text-white p-6 rounded-2xl text-center">
-          <i class="fab fa-python text-3xl mb-4"></i>
-          <h3 class="text-lg font-bold">Python</h3>
-        </div>
-        <div class="skill-badge bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 rounded-2xl text-center">
-          <i class="fas fa-file-excel text-3xl mb-4"></i>
-          <h3 class="text-lg font-bold">Excel</h3>
-        </div>
-      </div>
+  <!-- Contact -->
+  <section id="contact" class="py-32 px-6 text-center reveal">
+    <h2 class="text-5xl font-bold mb-10">Get in Touch</h2>
+    <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+      Available for freelance projects, full-time roles, or just a chat about data!
+    </p>
+    <div class="flex justify-center gap-8 text-3xl">
+      <a href="mailto:michealtom2001@gmail.com" class="hover:text-purple-400 transition"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="hover:text-purple-400 transition"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/adelakul" target="_blank" class="hover:text-purple-400 transition"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="mt-10">
+      <a href="https://drive.google.com/uc?export=download&id=1BzCY5OoUZ3_wLZjnTUNLQH4mBQG-KaWW" 
+         class="inline-block px-10 py-4 bg-purple-600 rounded-full font-bold hover:bg-purple-700 transition">
+        Download Resume
+      </a>
     </div>
   </section>
-
-  <!-- Enhanced Contact Section -->
-  <section id="contact" class="py-20 bg-gradient-to-br from-gray-900 to-blue-900 text-white relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <div class="particles"></div>
-    </div>
-    
-    <div class="max-w-6xl mx-auto px-4 relative z-10">
-      <!-- Header Section - Centered -->
-      <div class="text-center mb-16">
-        <h3 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Let's Connect & Collaborate
-        </h3>
-        <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-          Ready to turn your data into actionable insights? Let's discuss how we can work together to drive your business forward.
-        </p>
-      </div>
-      
-      <!-- Main Content Grid -->
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-        
-        <!-- Left Column - Contact Info & Stats -->
-        <div class="space-y-8">
-          <!-- Contact Information -->
-          <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
-            <h4 class="text-3xl font-bold mb-8 text-center">Get in Touch</h4>
-            
-            <div class="space-y-6">
-              <!-- Email -->
-              <div class="contact-item flex items-center space-x-4 p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-envelope text-white text-lg"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="font-semibold text-lg">Email</p>
-                  <a href="mailto:michealtom2001@gmail.com" class="text-blue-300 hover:text-blue-200 transition break-all">
-                    michealtom2001@gmail.com
-                  </a>
-                </div>
-              </div>
-              
-              <!-- LinkedIn -->
-              <div class="contact-item flex items-center space-x-4 p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fab fa-linkedin text-white text-lg"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="font-semibold text-lg">LinkedIn</p>
-                  <a href="https://www.linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="text-blue-300 hover:text-blue-200 transition">
-                    Connect with me
-                  </a>
-                </div>
-              </div>
-              
-              <!-- GitHub -->
-              <div class="contact-item flex items-center space-x-4 p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="w-14 h-14 bg-gradient-to-r from-gray-600 to-gray-700 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <i class="fab fa-github text-white text-lg"></i>
-                </div>
-                <div class="flex-1">
-                  <p class="font-semibold text-lg">GitHub</p>
-                  <a href="https://github.com/adelakul" target="_blank" class="text-blue-300 hover:text-blue-200 transition">
-                    View my repositories
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Quick Stats -->
-          <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
-            <h5 class="text-2xl font-bold mb-8 text-center">Why Work With Me?</h5>
-            <div class="grid grid-cols-2 gap-6">
-              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="text-3xl font-bold text-blue-400 mb-2">4+</div>
-                <div class="text-gray-300 font-medium">Projects</div>
-              </div>
-              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="text-3xl font-bold text-green-400 mb-2">3</div>
-                <div class="text-gray-300 font-medium">Certifications</div>
-              </div>
-              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="text-3xl font-bold text-yellow-400 mb-2">1+</div>
-                <div class="text-gray-300 font-medium">Years Experience</div>
-              </div>
-              <div class="stat-card text-center p-4 rounded-xl bg-white bg-opacity-5">
-                <div class="text-3xl font-bold text-purple-400 mb-2">24h</div>
-                <div class="text-gray-300 font-medium">Response Time</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Right Column - Contact Form -->
-        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
-          <h4 class="text-3xl font-bold mb-8 text-center">Send a Message</h4>
-          
-          <form action="https://formspree.io/f/xwpopprw" method="POST" class="space-y-6">
-            <div class="form-group">
-              <label class="block text-sm font-semibold mb-3 text-gray-300">Your Name</label>
-              <input type="text" 
-                     name="name" 
-                     placeholder="Enter your full name" 
-                     required
-                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400">
-            </div>
-            
-            <div class="form-group">
-              <label class="block text-sm font-semibold mb-3 text-gray-300">Email Address</label>
-              <input type="email" 
-                     name="email" 
-                     placeholder="your.email@example.com" 
-                     required
-                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400">
-            </div>
-            
-            <div class="form-group">
-              <label class="block text-sm font-semibold mb-3 text-gray-300">Subject</label>
-              <input type="text" 
-                     name="subject" 
-                     placeholder="What's this about?" 
-                     required
-                     class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400">
-            </div>
-            
-            <div class="form-group">
-              <label class="block text-sm font-semibold mb-3 text-gray-300">Message</label>
-              <textarea name="message" 
-                        rows="5" 
-                        placeholder="Tell me about your project or how I can help you..."
-                        required
-                        class="form-input w-full p-4 rounded-xl bg-white bg-opacity-20 border border-white border-opacity-30 text-white placeholder-gray-400 resize-none"></textarea>
-            </div>
-            
-            <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-4 px-8 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-              <i class="fas fa-paper-plane mr-2"></i>
-              Send Message
-            </button>
-          </form>
-          
-          <div class="mt-8 p-4 bg-green-500 bg-opacity-20 rounded-xl border border-green-400 border-opacity-30">
-            <div class="flex items-center space-x-2 text-green-300">
-              <i class="fas fa-check-circle"></i>
-              <span class="text-sm font-medium">I typically respond within 24 hours</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center">
-        <div class="flex justify-center space-x-6 mb-8">
-          <a href="https://www.linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="text-gray-400 hover:text-white transition">
-            <i class="fab fa-linkedin text-2xl"></i>
-          </a>
-          <a href="https://github.com/adelakul" target="_blank" class="text-gray-400 hover:text-white transition">
-            <i class="fab fa-github text-2xl"></i>
-          </a>
-          <a href="mailto:michealtom2001@gmail.com" class="text-gray-400 hover:text-white transition">
-            <i class="fas fa-envelope text-2xl"></i>
-          </a>
-        </div>
-        <p class="text-gray-400">
-          © 2024 Adelakun Tomisin Michael. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
 
   <script>
-    // Mobile menu functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-      const nav = document.querySelector('nav');
-      
-      mobileMenuBtn?.addEventListener('click', function() {
-        nav.classList.toggle('mobile-open');
-      });
-
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Carousel functionality
-      const carousel = document.querySelector('.carousel');
-      const prevBtn = document.querySelector('.carousel-prev');
-      const nextBtn = document.querySelector('.carousel-next');
-      
-      if (carousel && prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-          carousel.scrollBy({ left: -400, behavior: 'smooth' });
-        });
-        
-        nextBtn.addEventListener('click', () => {
-          carousel.scrollBy({ left: 400, behavior: 'smooth' });
-        });
-      }
-
-      // Animate progress bars on scroll
-      const progressBars = document.querySelectorAll('.progress-bar');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const bar = entry.target;
-            const width = bar.style.width;
-            bar.style.width = '0%';
-            setTimeout(() => {
-              bar.style.width = width;
-            }, 100);
-          }
-        });
-      });
-
-      progressBars.forEach(bar => observer.observe(bar));
-
-      // GSAP animations
-      if (typeof gsap !== 'undefined') {
-        gsap.from('.hero-text', { duration: 1, y: 50, opacity: 0, delay: 0.5 });
-        gsap.from('.float', { duration: 1, scale: 0.8, opacity: 0, delay: 0.3 });
-      }
+    // Typed.js for hero
+    new Typed('#typed', {
+      strings: ['Data Analyst', 'Power BI Expert', 'Python Developer', 'Storyteller with Data'],
+      typeSpeed: 70,
+      backSpeed: 40,
+      loop: true
     });
+
+    // Typed.js for about
+    new Typed('#typed-about', {
+      strings: ['Turning raw data into business impact', 'Building dashboards that drive decisions', 'Automating insights with code'],
+      typeSpeed: 50,
+      backSpeed: 30,
+      loop: true
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
