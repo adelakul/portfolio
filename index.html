@@ -13,54 +13,71 @@
     body { font-family: 'JetBrains Mono', monospace; }
     .typed-cursor { opacity: 1; font-weight: 700; animation: blink 0.7s infinite; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    .reveal { opacity: 0; transform: translateY(50px); transition: all 1.2s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-    .skill-btn { transition: all 0.4s ease; }
-    .skill-btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(139, 92, 246, 0.4); }
+    
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    
+    .slide-in-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+    .slide-in-left.visible { opacity: 1; transform: translateX(0); }
+    
+    .scale-in { opacity: 0; transform: scale(0); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .scale-in.visible { opacity: 1; transform: scale(1); }
+    
+    .skill-btn { transition: all 0.3s ease; }
+    .skill-btn:hover { transform: translateY(-3px); background: linear-gradient(to right, #14b8a6, #06b6d4); }
+    
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    #mobile-menu.open { max-height: 300px; }
   </style>
 </head>
 <body class="min-h-screen bg-fixed bg-gradient-to-br from-black via-purple-900 to-black text-white antialiased">
 
   <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 px-6 py-5 backdrop-blur-lg bg-black/30 border-b border-white/10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold text-purple-400">ATM</a>
-      <div class="hidden md:flex space-x-10 text-lg">
-        <a href="#home" class="hover:text-purple-400 transition">Home</a>
-        <a href="#about" class="hover:text-purple-400 transition">About</a>
-        <a href="#skills" class="hover:text-purple-400 transition">Skills</a>
-        <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
-        <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-lg bg-black/30 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-5">
+      <div class="flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-white">Adelakun Tomisin Michael</a>
+        <div class="hidden md:flex space-x-10 text-lg">
+          <a href="#home" class="hover:text-teal-400 transition">Home</a>
+          <a href="#about" class="hover:text-teal-400 transition">About</a>
+          <a href="#skills" class="hover:text-teal-400 transition">Skills</a>
+          <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
+          <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
+        </div>
+        <button id="mobile-toggle" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
       </div>
-      <button class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+      <div id="mobile-menu" class="md:hidden">
+        <div class="flex flex-col space-y-4 py-4 text-lg">
+          <a href="#home" class="hover:text-teal-400 transition">Home</a>
+          <a href="#about" class="hover:text-teal-400 transition">About</a>
+          <a href="#skills" class="hover:text-teal-400 transition">Skills</a>
+          <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
+          <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
+        </div>
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
   <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6">
-    <div class="reveal">
-      <h1 class="text-5xl md:text-7xl font-bold mb-6">
-        Hi, I am <span class="text-purple-400">Adelakun Tomisin Michael</span>
+    <div class="scale-in">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        I am a <span class="text-teal-400"><span id="typed"></span></span>
       </h1>
-      <p class="text-2xl md:text-4xl mb-8">
-        I am a <span id="typed"></span>
-      </p>
-      <div class="flex gap-6 justify-center">
-        <a href="#projects" class="px-8 py-4 bg-purple-600 rounded-full hover:bg-purple-700 transition font-bold">View Projects</a>
-        <a href="#contact" class="px-8 py-4 border-2 border-purple-600 rounded-full hover:bg-purple-600 transition font-bold">Contact Me</a>
-      </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="py-32 px-6 max-w-5xl mx-auto reveal">
-    <h2 class="text-4xl md:text-6xl font-bold text-center mb-10">
-      About Me:<br>
-      <span class="text-purple-400 text-3xl md:text-5xl">
-        <span id="typed-about"></span>
-      </span>
-    </h2>
-    <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-center mt-10">
+  <section id="about" class="py-24 px-6 max-w-5xl mx-auto">
+    <div class="fade-in">
+      <h2 class="text-3xl md:text-5xl font-bold mb-6">
+        About me:<br>
+        <span class="text-teal-400 text-2xl md:text-3xl">
+          <span id="typed-about"></span>
+        </span>
+      </h2>
+    </div>
+    <p class="text-lg md:text-xl text-gray-300 leading-relaxed fade-in" style="transition-delay: 0.2s;">
       I'm a passionate Data Analyst who transforms raw data into actionable business insights using 
       Power BI, SQL, Python, and advanced ETL pipelines. Currently building real-world solutions that help 
       organizations make smarter decisions through interactive dashboards and predictive analytics.
@@ -68,62 +85,71 @@
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="py-24 px-6 reveal">
-    <h2 class="text-4 for skills text-5xl font-bold text-center mb-16">Skills</h2>
-    <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
-      <!-- Repeat this block for each skill -->
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Power BI</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">SQL</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Python</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Excel</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Docker</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">ETL Pipelines</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Prophet</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">ARIMA</button>
-      <button class="skill-btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium shadow-lg">Git & GitHub</button>
+  <section id="skills" class="py-24 px-6">
+    <div class="fade-in">
+      <p class="text-3xl font-bold mb-8">Skills:</p>
+    </div>
+    <div class="flex flex-wrap gap-4 max-w-6xl mx-auto" id="skills-container">
+      <div class="slide-in-left"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">Power BI</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.05s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">SQL</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.1s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">Python</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.15s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">Excel</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.2s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">Docker</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.25s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">ETL Pipelines</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.3s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">Prophet</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.35s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">ARIMA</button></div>
+      <div class="slide-in-left" style="transition-delay: 0.4s;"><button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-5 py-2.5 rounded-lg font-medium">Git & GitHub</button></div>
     </div>
   </section>
 
   <!-- Projects -->
   <section id="projects" class="py-24 px-6">
-    <h2 class="text-5xl font-bold text-center mb-16">Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+    <div class="fade-in">
+      <p class="text-3xl font-bold mb-10">Projects:</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
 
       <!-- Project 1 -->
-      <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-2xl overflow-hidden border border-gray-700">
-        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" alt="Accident Analysis" class="w-full h-56 object-cover">
-        <div class="p-8">
-          <h3 class="text-2xl font-bold text-teal-400 mb-3">Accident Analysis Dashboard</h3>
-          <p class="text-gray-300 mb-4">Interactive Power BI dashboard analyzing road crash trends, severity, and emergency response across Nigeria.</p>
-          <p class="text-sm text-gray-400 mb-4"><strong>Stack:</strong> Power BI • SQL • DAX</p>
+      <div class="fade-in bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 shadow-lg">
+        <div class="w-full h-48 overflow-hidden">
+          <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" alt="Accident Analysis" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-teal-400 mb-2">Accident Analysis Dashboard</h3>
+          <p class="text-sm text-gray-300 mb-3"><strong>Tech Stack:</strong> Power BI • SQL • DAX</p>
+          <p class="text-gray-200 text-sm mb-4">Interactive Power BI dashboard analyzing road crash trends, severity, and emergency response across Nigeria.</p>
           <div class="flex gap-4">
-            <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" target="_blank" class="text-teal-400 hover:underline">Live Demo →</a>
-            <a href="https://docs.google.com/presentation/d/1o3XKvAP_h0CjvIiT62OjQHfmoYmK5GZZF-JedkdvR00/edit?usp=drive_link" target="_blank" class="text-teal-400 hover:underline">Presentation</a>
+            <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" target="_blank" class="text-teal-400 hover:text-teal-300 transition">Live Demo</a>
+            <a href="https://docs.google.com/presentation/d/1o3XKvAP_h0CjvIiT62OjQHfmoYmK5GZZF-JedkdvR00/edit?usp=drive_link" target="_blank" class="text-teal-400 hover:text-teal-300 transition">Presentation</a>
           </div>
         </div>
       </div>
 
       <!-- Project 2 -->
-      <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-2xl overflow-hidden border border-gray-700">
-        <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" alt="RetailPulse" class="w-full h-56 object-cover">
-        <div class="p-8">
-          <h3 class="text-2xl font-bold text-teal-400 mb-3">RetailPulse - Real-Time ETL</h3>
-          <p class="text-gray-300 mb-4">Dockerized ETL pipeline that cleans, merges, and feeds real-time retail data into Power BI dashboards.</p>
-          <p class="text-sm text-gray-400 mb-4"><strong>Stack:</strong> Python • Docker • SQL Server • Power BI</p>
-          <a href="https://github.com/adelakul/retail-pulse" target="_blank" class="text-teal-400 hover:underline">GitHub →</a>
+      <div class="fade-in bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 shadow-lg" style="transition-delay: 0.1s;">
+        <div class="w-full h-48 overflow-hidden">
+          <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" alt="RetailPulse" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-teal-400 mb-2">RetailPulse - Real-Time ETL</h3>
+          <p class="text-sm text-gray-300 mb-3"><strong>Tech Stack:</strong> Python • Docker • SQL Server • Power BI</p>
+          <p class="text-gray-200 text-sm mb-4">Dockerized ETL pipeline that cleans, merges, and feeds real-time retail data into Power BI dashboards.</p>
+          <a href="https://github.com/adelakul/retail-pulse" target="_blank" class="text-teal-400 hover:text-teal-300 transition">GitHub →</a>
         </div>
       </div>
 
       <!-- Project 3 -->
-      <div class="reveal bg-gray-900/80 backdrop-blur-md rounded-2xl overflow-hidden border border-gray-700">
-        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" alt="Adidas Forecasting" class="w-full h-56 object-cover">
-        <div class="p-8">
-          <h3 class="text-2xl font-bold text-teal-400 mb-3">Adidas Sales Forecasting</h3>
-          <p class="text-gray-300 mb-4">Time-series forecasting model using Prophet & ARIMA to predict US sales with exportable results.</p>
-          <p class="text-sm text-gray-400 mb-4"><strong>Stack:</strong> Python • Prophet • ARIMA • Power BI</p>
+      <div class="fade-in bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 shadow-lg" style="transition-delay: 0.2s;">
+        <div class="w-full h-48 overflow-hidden">
+          <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" alt="Adidas Forecasting" class="w-full h-full object-cover">
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-teal-400 mb-2">Adidas Sales Forecasting</h3>
+          <p class="text-sm text-gray-300 mb-3"><strong>Tech Stack:</strong> Python • Prophet • ARIMA • Power BI</p>
+          <p class="text-gray-200 text-sm mb-4">Time-series forecasting model using Prophet & ARIMA to predict US sales with exportable results.</p>
           <div class="flex gap-4">
-            <a href="https://github.com/adelakul/adidas-sales-forecast" target="_blank" class="text-teal-400 hover:underline">GitHub</a>
-            <a href="https://colab.research.google.com/drive/1LSJYC7-U_MODONoZQxTpsM7ykwuk6E2w?usp=sharing" target="_blank" class="text-teal-400 hover:underline">Colab Notebook</a>
+            <a href="https://github.com/adelakul/adidas-sales-forecast" target="_blank" class="text-teal-400 hover:text-teal-300 transition">GitHub</a>
+            <a href="https://colab.research.google.com/drive/1LSJYC7-U_MODONoZQxTpsM7ykwuk6E2w?usp=sharing" target="_blank" class="text-teal-400 hover:text-teal-300 transition">Colab</a>
           </div>
         </div>
       </div>
@@ -132,21 +158,51 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-32 px-6 text-center reveal">
-    <h2 class="text-5xl font-bold mb-10">Get in Touch</h2>
-    <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-      Available for freelance projects, full-time roles, or just a chat about data!
-    </p>
-    <div class="flex justify-center gap-8 text-3xl">
-      <a href="mailto:michealtom2001@gmail.com" class="hover:text-purple-400 transition"><i class="fas fa-envelope"></i></a>
-      <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="hover:text-purple-400 transition"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/adelakul" target="_blank" class="hover:text-purple-400 transition"><i class="fab fa-github"></i></a>
-    </div>
-    <div class="mt-10">
-      <a href="https://drive.google.com/uc?export=download&id=1BzCY5OoUZ3_wLZjnTUNLQH4mBQG-KaWW" 
-         class="inline-block px-10 py-4 bg-purple-600 rounded-full font-bold hover:bg-purple-700 transition">
-        Download Resume
-      </a>
+  <section id="contact" class="py-24 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="fade-in">
+        <h2 class="text-3xl font-bold mb-4 text-center text-teal-400">Get in Touch</h2>
+        <p class="text-center mb-8 text-gray-300">Feel free to reach out for collaborations, questions, or just to say hi!</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Contact Form -->
+        <form class="space-y-4 fade-in" style="transition-delay: 0.1s;">
+          <div>
+            <label for="name" class="block mb-1 font-medium">Name</label>
+            <input id="name" type="text" class="w-full p-2 border rounded-md bg-gray-800 border-gray-700 text-white" name="name"/>
+          </div>
+          <div>
+            <label for="email" class="block mb-1 font-medium">Email</label>
+            <input id="email" type="email" class="w-full p-2 border rounded-md bg-gray-800 border-gray-700 text-white" name="email"/>
+          </div>
+          <div>
+            <label for="message" class="block mb-1 font-medium">Message</label>
+            <textarea id="message" rows="4" class="w-full p-2 border rounded-md bg-gray-800 border-gray-700 text-white" name="message"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-teal-500 text-white py-2 rounded-md hover:bg-teal-600 transition">Send Message</button>
+        </form>
+
+        <!-- Contact Info -->
+        <div class="space-y-4 fade-in" style="transition-delay: 0.2s;">
+          <h3 class="text-xl font-semibold text-teal-400">Contact Information</h3>
+          <p class="text-gray-300">Email: <a href="mailto:michealtom2001@gmail.com" class="text-teal-400 hover:underline">michealtom2001@gmail.com</a></p>
+          
+          <h3 class="text-xl font-semibold mt-6 text-teal-400">Connect with Me</h3>
+          <div class="flex space-x-4 text-2xl">
+            <a href="mailto:michealtom2001@gmail.com" class="text-gray-300 hover:text-teal-400 transition"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="text-gray-300 hover:text-teal-400 transition"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/adelakul" target="_blank" class="text-gray-300 hover:text-teal-400 transition"><i class="fab fa-github"></i></a>
+          </div>
+          
+          <div class="mt-6">
+            <a href="https://drive.google.com/uc?export=download&id=1BzCY5OoUZ3_wLZjnTUNLQH4mBQG-KaWW" 
+               class="inline-block px-8 py-3 bg-teal-600 rounded-lg font-bold hover:bg-teal-700 transition">
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -167,17 +223,45 @@
       loop: true
     });
 
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    reveals.forEach(el => observer.observe(el));
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .slide-in-left, .scale-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
