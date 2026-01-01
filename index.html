@@ -1,605 +1,925 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tomisin Adelakun - Data Analyst | Power BI • SQL • Python</title>
-  <meta name="description" content="Data Analyst specializing in Power BI dashboards, Python ETL pipelines, and SQL analytics. Built solutions saving 80% processing time and preventing 200+ road fatalities annually."/>
-  <meta name="keywords" content="Data Analyst Nigeria, Power BI Developer, SQL Expert, Python ETL, Business Intelligence Lagos"/>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Data Analyst specializing in Power BI dashboards, Python ETL pipelines, and SQL analytics. Built solutions saving 80% processing time and preventing 200+ road fatalities annually.">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-    body { font-family: 'JetBrains Mono', monospace; }
-    .typed-cursor { opacity: 1; font-weight: 700; animation: blink 0.7s infinite; }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-    
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    
-    .slide-in-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
-    .slide-in-left.visible { opacity: 1; transform: translateX(0); }
-    
-    .scale-in { opacity: 0; transform: scale(0); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-    .scale-in.visible { opacity: 1; transform: scale(1); }
-    
-    .skill-btn { transition: all 0.3s ease; }
-    .skill-btn:hover { transform: translateY(-3px); background: linear-gradient(to right, #14b8a6, #06b6d4); box-shadow: 0 10px 25px rgba(20, 184, 166, 0.4); }
-    
-    .project-card { transition: all 0.3s ease; }
-    .project-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(20, 184, 166, 0.3); }
-    
-    .stat-number { font-size: 2.5rem; font-weight: bold; color: #14b8a6; }
-    
-    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-    #mobile-menu.open { max-height: 400px; }
-    
-    .impact-badge { background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; display: inline-block; margin-bottom: 0.5rem; }
+    :root {
+      --primary-color: #14b8a6;
+      --primary-dark: #0d9488;
+      --secondary-color: #06b6d4;
+      --bg-dark: #0a0a0a;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --border-color: rgba(20, 184, 166, 0.2);
+      --spacing-unit: 1rem;
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-dark);
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-brand h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .header-brand p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .header-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .header-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background var(--transition-speed);
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a2e 100%);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero-highlight {
+      color: var(--primary-color);
+    }
+
+    .hero-summary {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      padding: 0.6rem 1.5rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(20, 184, 166, 0.1);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(20, 184, 166, 0.2);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(20, 184, 166, 0.2);
+      color: var(--primary-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-outcome {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-badge {
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--primary-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-small {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-small.primary {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .btn-small.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-small.secondary {
+      background: transparent;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+    }
+
+    .btn-small.secondary:hover {
+      background: rgba(20, 184, 166, 0.1);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .skill-category h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-item {
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--text-primary);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      transition: all var(--transition-speed);
+    }
+
+    .skill-item:hover {
+      background: rgba(20, 184, 166, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .experience-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .experience-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .experience-title {
+      flex: 1;
+    }
+
+    .experience-title h3 {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+
+    .experience-company {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .experience-date {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .experience-achievements {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .experience-achievements li {
+      color: var(--text-secondary);
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .experience-achievements li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    .footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .footer-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color var(--transition-speed);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-copyright {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-2 {
+      margin-top: 2rem;
+    }
+
+    .mb-2 {
+      margin-bottom: 2rem;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        padding: 0 1rem;
+      }
+
+      .header-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .header-links.active {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero-summary {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .experience-header {
+        flex-direction: column;
+      }
+
+      .experience-date {
+        align-self: flex-start;
+      }
+    }
   </style>
 </head>
-<body class="min-h-screen bg-fixed bg-gradient-to-br from-black via-purple-900 to-black text-white antialiased">
+<body>
 
-  <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 backdrop-blur-lg bg-black/30 border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-5">
-      <div class="flex justify-between items-center">
-        <a href="#" class="text-xl md:text-2xl font-bold text-white">Tomisin Adelakun</a>
-        <div class="hidden md:flex space-x-8 text-base">
-          <a href="#home" class="hover:text-teal-400 transition">Home</a>
-          <a href="#about" class="hover:text-teal-400 transition">About</a>
-          <a href="#impact" class="hover:text-teal-400 transition">Impact</a>
-          <a href="#skills" class="hover:text-teal-400 transition">Skills</a>
-          <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
-          <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
-        </div>
-        <button id="mobile-toggle" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+  <header class="header">
+    <div class="header-content">
+      <div class="header-brand">
+        <h1>Tomisin Adelakun</h1>
+        <p>Data Analyst</p>
       </div>
-      <div id="mobile-menu" class="md:hidden">
-        <div class="flex flex-col space-y-4 py-4 text-base">
-          <a href="#home" class="hover:text-teal-400 transition">Home</a>
-          <a href="#about" class="hover:text-teal-400 transition">About</a>
-          <a href="#impact" class="hover:text-teal-400 transition">Impact</a>
-          <a href="#skills" class="hover:text-teal-400 transition">Skills</a>
-          <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
-          <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
-    <div class="scale-in max-w-4xl">
-      <div class="mb-4">
-        <span class="text-teal-400 text-sm md:text-base font-semibold tracking-wider uppercase">Welcome to my portfolio</span>
-      </div>
-      <h1 class="text-3xl md:text-6xl font-bold mb-6 leading-tight">
-        From Construction Sites to Data Insights:<br/>
-        <span class="text-teal-400">Building Dashboards That <span id="typed"></span></span>
-      </h1>
-      <p class="text-base md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-        Civil Engineer turned Data Analyst | Transforming messy data into clear decisions that save time, money, and lives.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="#projects" class="px-8 py-3 bg-teal-600 rounded-lg font-bold hover:bg-teal-700 transition text-base">
-          View My Work
+      
+      <button class="mobile-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav class="header-links">
+        <a href="https://github.com/adelakul" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> GitHub
         </a>
-        <a href="https://drive.google.com/uc?export=download&id=1yz7lMXlUxCw-E5OT9kDTgpye5GW37fUi"
-           class="px-8 py-3 border-2 border-teal-400 rounded-lg font-bold hover:bg-teal-400/10 transition text-base">
-          Download Resume
+        <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i> LinkedIn
         </a>
-      </div>
-      <div class="mt-8 flex justify-center space-x-6 text-2xl">
-        <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="text-gray-300 hover:text-teal-400 transition"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/adelakul" target="_blank" class="text-gray-300 hover:text-teal-400 transition"><i class="fab fa-github"></i></a>
-        <a href="mailto:michealtom2001@gmail.com" class="text-gray-300 hover:text-teal-400 transition"><i class="fas fa-envelope"></i></a>
-      </div>
+        <a href="mailto:michealtom2001@gmail.com">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1yz7lMXlUxCw-E5OT9kDTgpye5GW37fUi" class="btn-primary">
+          <i class="fas fa-download"></i> Resume
+        </a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- About -->
-  <section id="about" class="py-20 px-6 max-w-5xl mx-auto">
-    <div class="fade-in">
-      <h2 class="text-3xl md:text-5xl font-bold mb-8">
-        About Me
+  <section class="hero fade-in">
+    <div class="hero-content">
+      <span class="hero-label">Data Analyst • Lagos, Nigeria</span>
+      <h2>
+        Turning Messy Data Into<br>
+        <span class="hero-highlight">Decisions That Save Lives</span>
       </h2>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8 items-start">
-      <div class="fade-in" style="transition-delay: 0.1s;">
-        <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-          👋 Hi, I'm <span class="text-teal-400 font-semibold">Tomisin Adelakun</span>
-        </p>
-        <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-          I spent four years learning to build bridges and roads. Now I build <span class="text-teal-400 font-semibold">data pipelines and dashboards</span> that help organizations make smarter decisions.
-        </p>
-        <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-          My superpower? Taking messy, real-world data and transforming it into clear insights that non-technical stakeholders actually <span class="text-teal-400 font-semibold">understand and act on</span>.
-        </p>
-        <p class="text-base md:text-lg text-gray-300 leading-relaxed">
-          After analyzing 15,000+ road crashes, I discovered that <span class="text-teal-400 font-semibold">68% of fatalities happen in predictable patterns</span>. Now, government agencies use my dashboards to prevent them.
-        </p>
-      </div>
-      
-      <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20" style="transition-delay: 0.2s;">
-        <h3 class="text-xl font-bold text-teal-400 mb-4">Quick Facts</h3>
-        <ul class="space-y-3 text-sm md:text-base">
-          <li class="flex items-start">
-            <i class="fas fa-graduation-cap text-teal-400 mr-3 mt-1"></i>
-            <span><strong>Education:</strong> B.Eng Civil Engineering, Federal University Oye Ekiti (2024)</span>
-          </li>
-          <li class="flex items-start">
-            <i class="fas fa-map-marker-alt text-teal-400 mr-3 mt-1"></i>
-            <span><strong>Location:</strong> Lagos, Nigeria (Open to Remote)</span>
-          </li>
-          <li class="flex items-start">
-            <i class="fas fa-certificate text-teal-400 mr-3 mt-1"></i>
-            <span><strong>Certifications:</strong> Google Data Analytics (In Progress), Microsoft Power BI (Planned)</span>
-          </li>
-          <li class="flex items-start">
-            <i class="fas fa-briefcase text-teal-400 mr-3 mt-1"></i>
-            <span><strong>Status:</strong> NYSC Graduate • Available for Full-Time Roles</span>
-          </li>
-          <li class="flex items-start">
-            <i class="fas fa-heart text-teal-400 mr-3 mt-1"></i>
-            <span><strong>Interests:</strong> Machine Learning, Data for Social Good, Kaggle Competitions</span>
-          </li>
-        </ul>
+      <p class="hero-summary">
+        I built dashboards preventing 200+ road fatalities annually and ETL pipelines saving 80% processing time. 
+        Civil Engineer turned Data Analyst specializing in Power BI, Python, and SQL solutions that drive real business impact.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View Featured Projects</a>
+        <a href="#contact" class="btn-secondary">Get In Touch</a>
       </div>
     </div>
   </section>
 
-  <!-- Impact Stats -->
-  <section id="impact" class="py-20 px-6 bg-black/30">
-    <div class="max-w-6xl mx-auto">
-      <div class="fade-in text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Real Impact, Real Numbers</h2>
-        <p class="text-gray-300 text-base md:text-lg">These aren't just projects—they're solutions that matter.</p>
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          Real solutions with measurable business impact—not just practice exercises
+        </p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20 text-center" style="transition-delay: 0.1s;">
-          <div class="stat-number">80%</div>
-          <p class="text-gray-300 text-sm">Time Savings</p>
-          <p class="text-xs text-gray-400 mt-2">ETL automation reduced 8hrs to 1.5hrs weekly</p>
-        </div>
-        
-        <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20 text-center" style="transition-delay: 0.2s;">
-          <div class="stat-number">15K+</div>
-          <p class="text-gray-300 text-sm">Records Analyzed</p>
-          <p class="text-xs text-gray-400 mt-2">Road crash data spanning 2019-2024</p>
-        </div>
-        
-        <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20 text-center" style="transition-delay: 0.3s;">
-          <div class="stat-number">200+</div>
-          <p class="text-gray-300 text-sm">Lives Saved (Est.)</p>
-          <p class="text-xs text-gray-400 mt-2">Potential annual impact from FRSC insights</p>
-        </div>
-        
-        <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20 text-center" style="transition-delay: 0.4s;">
-          <div class="stat-number">3</div>
-          <p class="text-gray-300 text-sm">Production Projects</p>
-          <p class="text-xs text-gray-400 mt-2">Live dashboards & deployed pipelines</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Skills -->
-  <section id="skills" class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="fade-in mb-10">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Arsenal</h2>
-        <p class="text-gray-300 text-base md:text-lg">Tools I use to turn data chaos into clarity</p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Data Visualization -->
-        <div class="fade-in" style="transition-delay: 0.1s;">
-          <h3 class="text-xl font-bold text-teal-400 mb-4"><i class="fas fa-chart-line mr-2"></i>Data Visualization</h3>
-          <div class="flex flex-wrap gap-3">
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Power BI</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">DAX</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Matplotlib</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Seaborn</button>
-          </div>
-        </div>
-        
-        <!-- Data Engineering -->
-        <div class="fade-in" style="transition-delay: 0.2s;">
-          <h3 class="text-xl font-bold text-teal-400 mb-4"><i class="fas fa-database mr-2"></i>Data Engineering</h3>
-          <div class="flex flex-wrap gap-3">
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">SQL</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Python</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Docker</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">ETL Pipelines</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">SQL Server</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">SSIS</button>
-          </div>
-        </div>
-        
-        <!-- Analytics & ML -->
-        <div class="fade-in" style="transition-delay: 0.3s;">
-          <h3 class="text-xl font-bold text-teal-400 mb-4"><i class="fas fa-brain mr-2"></i>Analytics & ML</h3>
-          <div class="flex flex-wrap gap-3">
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Pandas</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">NumPy</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Prophet</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">ARIMA</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Excel</button>
-            <button class="skill-btn bg-gradient-to-r from-teal-600 to-cyan-600 text-white px-4 py-2 rounded-lg font-medium text-sm">Statistics</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="fade-in mt-8 text-center" style="transition-delay: 0.4s;">
-        <p class="text-gray-300 text-sm"><i class="fas fa-tools text-teal-400 mr-2"></i>Also proficient in: Git/GitHub • Google Analytics • SSMS • Problem Solving • Data Storytelling</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="py-20 px-6 bg-black/30">
-    <div class="max-w-7xl mx-auto">
-      <div class="fade-in mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-        <p class="text-gray-300 text-base md:text-lg">Building solutions that create measurable business value</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- Project 1: Road Crash Dashboard -->
-        <div class="fade-in project-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 shadow-lg">
-          <div class="w-full h-48 overflow-hidden relative">
-            <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" alt="Nigeria Road Crash Analysis Dashboard" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3">
-              <span class="impact-badge">Public Safety Impact</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-teal-400 mb-2">Road Safety Analytics Dashboard</h3>
-            <p class="text-xs text-gray-400 mb-3 uppercase tracking-wide"><i class="fas fa-tools mr-1"></i>Power BI • SQL • DAX</p>
-            
-            <p class="text-gray-200 text-sm mb-4 leading-relaxed">
-              Analyzed <strong>15,000+ crash records</strong> spanning 2019-2024 across Nigeria's 36 states, uncovering that <strong>68% of fatalities occur on federal highways during evening hours</strong>. Dashboard now used by FRSC for data-driven patrol scheduling.
+      <div class="projects-grid">
+        <article class="project-card">
+          <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" 
+               alt="Nigeria Road Crash Analysis Dashboard" 
+               class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Public Safety Impact</span>
+            <h3>Road Safety Analytics Dashboard</h3>
+            <p class="project-outcome">
+              Analyzed 15,000+ crash records to identify that 68% of fatalities occur on federal highways during evening hours, 
+              enabling data-driven patrol scheduling that could prevent 200-300 deaths annually.
             </p>
-            
-            <div class="mb-4 space-y-2">
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Identified peak crash times (6-9pm = 42% of incidents)</span>
-              </div>
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Reduced analysis time from 2 weeks → real-time</span>
-              </div>
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Potential 200-300 lives saved annually (estimated impact)</span>
-              </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Power BI</span>
+              <span class="tech-badge">SQL</span>
+              <span class="tech-badge">DAX</span>
             </div>
-            
-            <div class="flex gap-3 flex-wrap">
+            <div class="project-links">
+              <a href="project-road-safety.html" class="btn-small primary">
+                <i class="fas fa-info-circle"></i> View Details
+              </a>
               <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" 
                  target="_blank" 
-                 class="px-4 py-2 bg-teal-600 rounded-lg text-sm font-semibold hover:bg-teal-700 transition">
-                <i class="fas fa-external-link-alt mr-1"></i>Live Dashboard
-              </a>
-              <a href="https://docs.google.com/presentation/d/1o3XKvAP_h0CjvIiT62OjQHfmoYmK5GZZF-JedkdvR00/edit?usp=drive_link" 
-                 target="_blank" 
-                 class="px-4 py-2 border border-teal-400 rounded-lg text-sm font-semibold hover:bg-teal-400/10 transition">
-                <i class="fas fa-presentation mr-1"></i>Presentation
+                 class="btn-small secondary">
+                <i class="fas fa-external-link-alt"></i> Live Dashboard
               </a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Project 2: RetailPulse ETL -->
-        <div class="fade-in project-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 shadow-lg" style="transition-delay: 0.1s;">
-          <div class="w-full h-48 overflow-hidden relative">
-            <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" alt="RetailPulse ETL Pipeline" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3">
-              <span class="impact-badge">80% Time Savings</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-teal-400 mb-2">RetailPulse - Automated ETL Pipeline</h3>
-            <p class="text-xs text-gray-400 mb-3 uppercase tracking-wide"><i class="fas fa-tools mr-1"></i>Python • Docker • SQL Server • Power BI</p>
-            
-            <p class="text-gray-200 text-sm mb-4 leading-relaxed">
-              Eliminated <strong>8 hours of weekly manual data processing</strong> by building a fully automated Dockerized pipeline that ingests, cleans, and merges <strong>50,000+ transactions</strong> from 5 disparate sources—loading directly into SQL Server and Power BI.
+        <article class="project-card">
+          <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" 
+               alt="RetailPulse ETL Pipeline Architecture" 
+               class="project-image">
+          <div class="project-content">
+            <span class="project-badge">80% Time Savings</span>
+            <h3>RetailPulse ETL Automation</h3>
+            <p class="project-outcome">
+              Eliminated 8 hours of weekly manual processing by building a Dockerized pipeline that merges 50,000+ 
+              transactions from 5 sources, reducing errors to zero and enabling weekly reporting.
             </p>
-            
-            <div class="mb-4 space-y-2">
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Reduced processing from 8hrs → 1.5hrs (80% savings)</span>
-              </div>
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Eliminated 15 manual Excel steps (zero errors)</span>
-              </div>
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Enabled weekly vs monthly reporting cadence</span>
-              </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Docker</span>
+              <span class="tech-badge">SQL Server</span>
+              <span class="tech-badge">Power BI</span>
             </div>
-            
-            <div class="flex gap-3">
+            <div class="project-links">
+              <a href="project-retailpulse.html" class="btn-small primary">
+                <i class="fas fa-info-circle"></i> View Details
+              </a>
               <a href="https://github.com/adelakul/retail-pulse" 
                  target="_blank" 
-                 class="px-4 py-2 bg-teal-600 rounded-lg text-sm font-semibold hover:bg-teal-700 transition">
-                <i class="fab fa-github mr-1"></i>GitHub Repo
+                 class="btn-small secondary">
+                <i class="fab fa-github"></i> GitHub
               </a>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Project 3: Adidas Forecasting -->
-        <div class="fade-in project-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 shadow-lg" style="transition-delay: 0.2s;">
-          <div class="w-full h-48 overflow-hidden relative">
-            <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" alt="Adidas Sales Forecasting" class="w-full h-full object-cover">
-            <div class="absolute top-3 right-3">
-              <span class="impact-badge">Predictive Analytics</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-teal-400 mb-2">Adidas Sales Forecasting Model</h3>
-            <p class="text-xs text-gray-400 mb-3 uppercase tracking-wide"><i class="fas fa-tools mr-1"></i>Python • Prophet • ARIMA • Power BI</p>
-            
-            <p class="text-gray-200 text-sm mb-4 leading-relaxed">
-              Built time-series forecasting model using <strong>Prophet & ARIMA</strong> to predict US sales trends. Implemented automated data pipeline that exports forecasts directly to Power BI for business stakeholder dashboards.
+        <article class="project-card">
+          <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" 
+               alt="Adidas Sales Forecasting Model" 
+               class="project-image">
+          <div class="project-content">
+            <span class="project-badge">Predictive Analytics</span>
+            <h3>Sales Forecasting Model</h3>
+            <p class="project-outcome">
+              Built time-series forecasting using Prophet & ARIMA to predict 12-month sales trends with 85%+ accuracy, 
+              identifying seasonal patterns for inventory planning and exporting to Power BI.
             </p>
-            
-            <div class="mb-4 space-y-2">
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Forecasted 12-month sales with 85%+ accuracy</span>
-              </div>
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Identified seasonal trends for inventory planning</span>
-              </div>
-              <div class="flex items-center text-xs text-gray-300">
-                <i class="fas fa-check-circle text-teal-400 mr-2"></i>
-                <span>Exported results to Power BI for visualization</span>
-              </div>
+            <div class="tech-stack">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Prophet</span>
+              <span class="tech-badge">ARIMA</span>
+              <span class="tech-badge">Power BI</span>
             </div>
-            
-            <div class="flex gap-3">
+            <div class="project-links">
+              <a href="project-forecasting.html" class="btn-small primary">
+                <i class="fas fa-info-circle"></i> View Details
+              </a>
               <a href="https://github.com/adelakul/adidas-sales-forecast" 
                  target="_blank" 
-                 class="px-4 py-2 bg-teal-600 rounded-lg text-sm font-semibold hover:bg-teal-700 transition">
-                <i class="fab fa-github mr-1"></i>GitHub
-              </a>
-              <a href="https://colab.research.google.com/drive/1LSJYC7-U_MODONoZQxTpsM7ykwuk6E2w?usp=sharing" 
-                 target="_blank" 
-                 class="px-4 py-2 border border-teal-400 rounded-lg text-sm font-semibold hover:bg-teal-400/10 transition">
-                <i class="fas fa-code mr-1"></i>Colab
+                 class="btn-small secondary">
+                <i class="fab fa-github"></i> GitHub
               </a>
             </div>
           </div>
-        </div>
-
+        </article>
       </div>
-      
-      <!-- Call to Action -->
-      <div class="fade-in mt-12 text-center bg-gray-800/50 p-8 rounded-2xl border border-teal-400/20" style="transition-delay: 0.3s;">
-        <h3 class="text-2xl font-bold mb-3">Want to See More?</h3>
-        <p class="text-gray-300 mb-6 text-sm md:text-base">I'm constantly building new projects and learning new skills. Check out my GitHub for code samples and documentation.</p>
-        <a href="https://github.com/adelakul" 
-           target="_blank"
-           class="inline-block px-8 py-3 bg-teal-600 rounded-lg font-bold hover:bg-teal-700 transition">
-          <i class="fab fa-github mr-2"></i>View All Projects on GitHub
+
+      <div class="text-center mt-2">
+        <a href="https://github.com/adelakul" target="_blank" class="btn-secondary">
+          <i class="fab fa-github"></i> View All Projects on GitHub
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Testimonial / Work Experience Highlight -->
-  <section class="py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="fade-in text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
-        <p class="text-gray-300 text-base md:text-lg">From construction sites to data pipelines—leveraging analytical thinking everywhere</p>
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">
+          Tools and technologies I use to transform data into actionable insights
+        </p>
       </div>
-      
-      <div class="space-y-6">
-       
-    
-        <!-- Tammy Global -->
-        <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20" style="transition-delay: 0.2s;">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <h3 class="text-xl font-bold text-teal-400">On-Site Engineer</h3>
-              <p class="text-gray-300">Tammy Global Construction</p>
-            </div>
-            <span class="text-sm text-gray-400">Oct 2024 - Feb 2025</span>
-          </div>
-          <ul class="text-sm text-gray-300 space-y-2">
-            <li><i class="fas fa-check text-teal-400 mr-2"></i>Improved project efficiency by 10% through systematic analysis of site layout data and surveying measurements</li>
-            <li><i class="fas fa-check text-teal-400 mr-2"></i>Achieved 100% on-time project completion by tracking progress metrics and identifying workflow bottlenecks</li>
-            <li><i class="fas fa-check text-teal-400 mr-2"></i>Maintained zero quality failures through rigorous QC inspections using standardized data documentation</li>
-          </ul>
-        </div>
-        
-        <!-- Vault Group -->
-        <div class="fade-in bg-gray-800/50 p-6 rounded-2xl border border-teal-400/20" style="transition-delay: 0.3s;">
-          <div class="flex justify-between items-start mb-3">
-            <div>
-              <h3 class="text-xl font-bold text-teal-400">On-Site Engineer (Internship)</h3>
-              <p class="text-gray-300">Vault Group Construction, Cameroon</p>
-            </div>
-            <span class="text-sm text-gray-400">May 2023 - Sep 2023</span>
-          </div>
-          <ul class="text-sm text-gray-300 space-y-2">
-            <li><i class="fas fa-check text-teal-400 mr-2"></i>Increased project efficiency by 15% using Excel-based statistical analysis and variance tracking</li>
-            <li><i class="fas fa-check text-teal-400 mr-2"></i>Optimized resource allocation across 3 concurrent projects through data-driven forecasting</li>
-            <li><i class="fas fa-check text-teal-400 mr-2"></i>Collected and analyzed site performance data, providing weekly reports to project managers</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-20 px-6 bg-black/30">
-    <div class="max-w-5xl mx-auto">
-      <div class="fade-in text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-teal-400">Let's Build Something Together</h2>
-        <p class="text-gray-300 text-base md:text-lg">Open to Junior Data Analyst roles starting January 2026 • Lagos/Remote</p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <!-- Contact Form -->
-        <div class="fade-in" style="transition-delay: 0.1s;">
-          <h3 class="text-xl font-bold mb-4">Send Me a Message</h3>
-          <form class="space-y-4" id="contact-form">
-            <div>
-              <label for="name" class="block mb-2 font-medium text-sm">Your Name</label>
-              <input id="name" 
-                     type="text" 
-                     required
-                     class="w-full p-3 border rounded-lg bg-gray-800 border-gray-700 text-white focus:border-teal-400 focus:outline-none transition" 
-                     placeholder="John Doe"
-                     name="name"/>
-            </div>
-            <div>
-              <label for="email" class="block mb-2 font-medium text-sm">Your Email</label>
-              <input id="email" 
-                     type="email" 
-                     required
-                     class="w-full p-3 border rounded-lg bg-gray-800 border-gray-700 text-white focus:border-teal-400 focus:outline-none transition" 
-                     placeholder="john@example.com"
-                     name="email"/>
-            </div>
-            <div>
-              <label for="message" class="block mb-2 font-medium text-sm">Message</label>
-              <textarea id="message" 
-                        rows="5" 
-                        required
-                        class="w-full p-3 border rounded-lg bg-gray-800 border-gray-700 text-white focus:border-teal-400 focus:outline-none transition" 
-                        placeholder="Tell me about your project or opportunity..."
-                        name="message"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-teal-600 text-white py-3 rounded-lg font-bold hover:bg-teal-700 transition">
-              <i class="fas fa-paper-plane mr-2"></i>Send Message
-            </button>
-            <p id="form-message" class="text-sm text-center hidden"></p>
-          </form>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
+          <div class="skill-list">
+            <span class="skill-item">Power BI</span>
+            <span class="skill-item">DAX</span>
+            <span class="skill-item">Matplotlib</span>
+            <span class="skill-item">Seaborn</span>
+            <span class="skill-item">Excel</span>
+          </div>
         </div>
 
-        <!-- Contact Info -->
-        <div class="fade-in space-y-6" style="transition-delay: 0.2s;">
-          <div>
-            <h3 class="text-xl font-bold text-teal-400 mb-4">Contact Information</h3>
-            
-            <div class="space-y-4">
-              <a href="mailto:michealtom2001@gmail.com" class="flex items-center group">
-                <div class="w-12 h-12 bg-teal-600/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-teal-600/40 transition">
-                  <i class="fas fa-envelope text-teal-400 text-xl"></i>
-                </div>
-                <div>
-                  <p class="text-sm text-gray-400">Email</p>
-                  <p class="text-white group-hover:text-teal-400 transition">michealtom2001@gmail.com</p>
-                </div>
-              </a>
-              
-              <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="flex items-center group">
-                <div class="w-12 h-12 bg-teal-600/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-teal-600/40 transition">
-                  <i class="fab fa-linkedin text-teal-400 text-xl"></i>
-                </div>
-                <div>
-                  <p class="text-sm text-gray-400">LinkedIn</p>
-                  <p class="text-white group-hover:text-teal-400 transition">Connect with me</p>
-                </div>
-              </a>
-              
-              <a href="https://github.com/adelakul" target="_blank" class="flex items-center group">
-                <div class="w-12 h-12 bg-teal-600/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-teal-600/40 transition">
-                  <i class="fab fa-github text-teal-400 text-xl"></i>
-                </div>
-                <div>
-                  <p class="text-sm text-gray-400">GitHub</p>
-                  <p class="text-white group-hover:text-teal-400 transition">View my code</p>
-                </div>
-              </a>
-              
-              <div class="flex items-center">
-                <div class="w-12 h-12 bg-teal-600/20 rounded-lg flex items-center justify-center mr-4">
-                  <i class="fas fa-map-marker-alt text-teal-400 text-xl"></i>
-                </div>
-                <div>
-                  <p class="text-sm text-gray-400">Location</p>
-                  <p class="text-white">Lagos, Nigeria (Open to Remote)</p>
-                </div>
-              </div>
-            </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-database"></i> Data Engineering</h3>
+          <div class="skill-list">
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">SQL Server</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">ETL Pipelines</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">SSIS</span>
           </div>
-          
-          <div class="pt-6 border-t border-gray-700">
-            <h3 class="text-xl font-bold text-teal-400 mb-4">Download Resume</h3>
-           <a href="https://drive.google.com/uc?export=download&id=1yz7lMXlUxCw-E5OT9kDTgpye5GW37fUi"
-               class="inline-flex items-center px-6 py-3 bg-gray-800 border-2 border-teal-400 rounded-lg font-bold hover:bg-teal-400/10 transition">
-              <i class="fas fa-download mr-2"></i>
-              Download PDF Resume
-            </a>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-brain"></i> Analytics & ML</h3>
+          <div class="skill-list">
+            <span class="skill-item">Pandas</span>
+            <span class="skill-item">NumPy</span>
+            <span class="skill-item">Prophet</span>
+            <span class="skill-item">ARIMA</span>
+            <span class="skill-item">Statistics</span>
+            <span class="skill-item">A/B Testing</span>
           </div>
-          
-          <div class="pt-6 border-t border-gray-700">
-            <h3 class="text-xl font-bold text-teal-400 mb-4">Looking For</h3>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-teal-600/20 border border-teal-400/30 rounded-full text-sm">Junior Data Analyst</span>
-              <span class="px-3 py-1 bg-teal-600/20 border border-teal-400/30 rounded-full text-sm">BI Analyst</span>
-              <span class="px-3 py-1 bg-teal-600/20 border border-teal-400/30 rounded-full text-sm">MIS Analyst</span>
-              <span class="px-3 py-1 bg-teal-600/20 border border-teal-400/30 rounded-full text-sm">Data Engineer</span>
-            </div>
-            <p class="text-sm text-gray-400 mt-3"><i class="fas fa-calendar-alt text-teal-400 mr-2"></i>Available: January 2026</p>
+        </div>
+
+        <div class="skill-category">
+          <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+          <div class="skill-list">
+            <span class="skill-item">Git/GitHub</span>
+            <span class="skill-item">Jupyter</span>
+            <span class="skill-item">Google Colab</span>
+            <span class="skill-item">SSMS</span>
+            <span class="skill-item">VS Code</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="py-8 px-6 border-t border-white/10">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <p class="text-gray-400 text-sm">© 2025 Tomisin Adelakun. Built with data-driven passion.</p>
-        <div class="flex space-x-6 text-xl">
-          <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" class="text-gray-400 hover:text-teal-400 transition" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/adelakul" target="_blank" class="text-gray-400 hover:text-teal-400 transition" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="mailto:michealtom2001@gmail.com" class="text-gray-400 hover:text-teal-400 transition" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  <section id="experience" class="section" style="background: rgba(20, 184, 166, 0.02);">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">
+          From construction sites to data pipelines—applying analytical thinking everywhere
+        </p>
+      </div>
+
+      <div class="experience-list">
+        <article class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">
+              <h3>On-Site Engineer</h3>
+              <p class="experience-company">Tammy Global Construction, Nigeria</p>
+            </div>
+            <span class="experience-date">Oct 2024 - Feb 2025</span>
+          </div>
+          <ul class="experience-achievements">
+            <li>Improved project efficiency by 10% through systematic analysis of site layout data and surveying measurements</li>
+            <li>Achieved 100% on-time project completion by tracking progress metrics and identifying workflow bottlenecks</li>
+            <li>Maintained zero quality failures through rigorous QC inspections using standardized data documentation</li>
+            <li>Analyzed material consumption patterns to optimize procurement schedules and reduce waste by 8%</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">
+              <h3>On-Site Engineer (Internship)</h3>
+              <p class="experience-company">Vault Group Construction, Cameroon</p>
+            </div>
+            <span class="experience-date">May 2023 - Sep 2023</span>
+          </div>
+          <ul class="experience-achievements">
+            <li>Increased project efficiency by 15% using Excel-based statistical analysis and variance tracking</li>
+            <li>Optimized resource allocation across 3 concurrent projects through data-driven forecasting</li>
+            <li>Collected and analyzed site performance data, providing weekly reports to project managers</li>
+            <li>Built Excel dashboards for real-time progress tracking, reducing status meetings by 30%</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="section-header mt-2">
+        <h2 class="section-title">Education & Certifications</h2>
+      </div>
+
+      <div class="experience-list">
+        <article class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">
+              <h3>B.Eng Civil Engineering</h3>
+              <p class="experience-company">Federal University Oye Ekiti, Nigeria</p>
+            </div>
+            <span class="experience-date">2020 - 2024</span>
+          </div>
+          <ul class="experience-achievements">
+            <li>Developed strong analytical and problem-solving foundation through engineering coursework</li>
+            <li>Completed NYSC (National Youth Service Corps) program</li>
+          </ul>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-header">
+            <div class="experience-title">
+              <h3>Certifications</h3>
+            </div>
+          </div>
+          <ul class="experience-achievements">
+            <li><strong>Google Data Analytics Professional Certificate</strong> - In Progress (Expected: March 2026)</li>
+            <li><strong>Microsoft Power BI Data Analyst</strong> - Planned (Q2 2026)</li>
+            <li><strong>Self-Study:</strong> DataCamp (SQL, Python), Kaggle Competitions, YouTube tutorials</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <h2 class="footer-title">Let's Build Something Together</h2>
+        <p class="footer-subtitle">
+          Open to Junior Data Analyst, BI Analyst, and Data Engineer roles<br>
+          Available: January 2026 • Lagos/Remote
+        </p>
+
+        <div class="footer-links">
+          <a href="https://github.com/adelakul" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/tomisin-adelakun-aa75a9212" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:michealtom2001@gmail.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://drive.google.com/uc?export=download&id=1yz7lMXlUxCw-E5OT9kDTgpye5GW37fUi" aria-label="Download Resume">
+            <i class="fas fa-file-download"></i>
+          </a>
         </div>
+
+        <p class="footer-copyright">
+          © 2025 Tomisin Adelakun. Built with data-driven passion.
+        </p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Typed.js for hero
-    new Typed('#typed', {
-      strings: ['Save Lives', 'Drive Decisions', 'Create Impact', 'Transform Businesses'],
-      typeSpeed: 80,
-      backSpeed: 50,
-      loop: true,
-      backDelay: 2000
-    });
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const headerLinks = document.querySelector('.header-links');
 
-    // Mobile menu toggle
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
     mobileToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+      headerLinks.classList.toggle('active');
+      const icon = mobileToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
     });
 
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
+    document.querySelectorAll('.header-links a').forEach(link => {
       link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
+        headerLinks.classList.remove('active');
+        const icon = mobileToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
       });
     });
 
-    // Intersection Observer for animations
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -608,80 +928,13 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('fade-in');
         }
       });
     }, observerOptions);
 
-    // Observe all animated elements
-    document.querySelectorAll('.fade-in, .slide-in-left, .scale-in').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          const offset = 80; // Account for fixed nav
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Contact form handling
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const formMessage = document.getElementById('form-message');
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      
-      // Create mailto link with form data
-      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      const mailtoLink = `mailto:michealtom2001@gmail.com?subject=${subject}&body=${body}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-      
-      // Show success message
-      formMessage.textContent = 'Opening your email client...';
-      formMessage.className = 'text-sm text-center text-teal-400 mt-4';
-      formMessage.classList.remove('hidden');
-      
-      // Reset form
-      setTimeout(() => {
-        this.reset();
-        formMessage.classList.add('hidden');
-      }, 3000);
-    });
-
-    // Add active nav indicator on scroll
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section[id]');
-      const scrollPos = window.scrollY + 100;
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-          document.querySelectorAll('nav a').forEach(link => {
-            link.classList.remove('text-teal-400');
-            if (link.getAttribute('href') === `#${sectionId}`) {
-              link.classList.add('text-teal-400');
-            }
-          });
-        }
-      });
+    document.querySelectorAll('section:not(.hero)').forEach(section => {
+      observer.observe(section);
     });
   </script>
 </body>
