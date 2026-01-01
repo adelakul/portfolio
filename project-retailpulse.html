@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RetailPulse ETL Automation - Tomisin Adelakun</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #14b8a6;
+      --primary-dark: #0d9488;
+      --bg-dark: #0a0a0a;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --border-color: rgba(20, 184, 166, 0.2);
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-dark);
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-button {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-button:hover {
+      color: var(--primary-dark);
+    }
+
+    .header-brand h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .project-hero {
+      padding: 8rem 0 3rem;
+      text-align: center;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(20, 184, 166, 0.2);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(20, 184, 166, 0.1);
+    }
+
+    .project-image {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 3rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-content {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-content p {
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feature-list li {
+      color: var(--text-secondary);
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.8;
+    }
+
+    .feature-list li:before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .impact-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform var(--transition-speed);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .tech-item {
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 3rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-title {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .impact-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <div class="header-brand">
+        <h1>Tomisin Adelakun</h1>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-hero">
+      <div class="container">
+        <span class="project-badge">80% Time Savings</span>
+        <h1 class="project-title">RetailPulse ETL Automation</h1>
+        <p class="project-subtitle">
+          Dockerized Python pipeline that eliminated 8 hours of weekly manual work, processing 50,000+ 
+          transactions from 5 sources with zero errors
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/adelakul/retail-pulse" 
+             target="_blank" 
+             class="btn-primary">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+          <a href="index.html#projects" class="btn-secondary">
+            <i class="fas fa-th-large"></i> All Projects
+          </a>
+        </div>
+        <img src="https://raw.githubusercontent.com/adelakul/picture-for-my-html-code/main/for%20html.png" 
+             alt="RetailPulse ETL Pipeline Architecture" 
+             class="project-image">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">
+          <i class="fas fa-exclamation-triangle"></i> The Problem
+        </h2>
+        <div class="section-content">
+          <p>
+            A retail analytics team was drowning in manual data processing. Every week, analysts spent 8+ hours:
+          </p>
+          <ul class="feature-list">
+            <li>Downloading CSV files from 5 different systems (POS, inventory, CRM, marketing, e-commerce)</li>
+            <li>Manually cleaning data: fixing date formats, handling nulls, removing duplicates</li>
+            <li>Copy-pasting between Excel sheets to merge datasets</li>
+            <li>Running VLOOKUP formulas prone to #N/A errors</li>
+            <li>Uploading final dataset to Power BI for visualization</li>
+          </ul>
+          <p>
+            This manual process caused 15+ errors per cycle, delayed reporting by weeks, and prevented the team 
+            from doing actual analysis. The business couldn't respond quickly to market trends because data was 
+            always outdated. Analysts were stuck doing data janitor work instead of generating insights.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-cogs"></i> My Approach
+        </h2>
+        <div class="section-content">
+          <p>
+            I built an end-to-end automated ETL pipeline that handles everything from data extraction to 
+            Power BI visualization:
+          </p>
+          <ul class="feature-list">
+            <li><strong>Python ETL Engine:</strong> Used Pandas and NumPy to ingest data from multiple file 
+                formats (CSV, Excel, JSON), apply transformations, and perform data quality checks</li>
+            <li><strong>Data Validation:</strong> Implemented automated checks for data types, null values, 
+                duplicate records, and business rule violations—rejecting bad data before it enters the warehouse</li>
+            <li><strong>SQL Server Integration:</strong> Loaded cleaned data into SQL Server with proper 
+                indexing for fast querying by Power BI</li>
+            <li><strong>Dockerization:</strong> Containerized the entire pipeline so it runs consistently 
+                across development, testing, and production environments</li>
+            <li><strong>Scheduling & Monitoring:</strong> Set up weekly automated runs with error logging 
+                and email alerts for failed jobs</li>
+          </ul>
+          <p>
+            The pipeline is modular and scalable—new data sources can be added by simply creating a new 
+            ingestion module without touching the core transformation logic.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-chart-line"></i> Business Impact
+        </h2>
+        
+        <div class="impact-metrics">
+          <div class="metric-card">
+            <span class="metric-value">80%</span>
+            <span class="metric-label">Time savings (8hrs → 1.5hrs per week)</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">0</span>
+            <span class="metric-label">Errors (eliminated 15 per week)</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">50,000+</span>
+            <span class="metric-label">Transactions processed weekly</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">Weekly</span>
+            <span class="metric-label">vs monthly reporting cadence</span>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <p>
+            <strong>Tangible Business Outcomes:</strong>
+          </p>
+          <ul class="feature-list">
+            <li><strong>Faster Decision Making:</strong> Reports now generated weekly instead of monthly, 
+                allowing quicker response to market trends</li>
+            <li><strong>Error Elimination:</strong> Automated validation catches data issues before they 
+                reach stakeholders, maintaining trust in analytics</li>
+            <li><strong>Analyst Productivity:</strong> Team redirected 80% of freed time to strategic analysis, 
+                customer segmentation, and predictive modeling</li>
+            <li><strong>Scalability:</strong> System handles 3x data volume growth without additional manual effort</li>
+            <li><strong>Consistency:</strong> Docker ensures the pipeline runs identically across all environments, 
+                eliminating "it works on my machine" issues</li>
+          </ul>
+          <p>
+            The business now has confidence in their data and can trust automated reports without 
+            manual verification. Executive leadership uses the dashboards in weekly reviews to make 
+            inventory, pricing, and marketing decisions.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-tools"></i> Technical Stack
+        </h2>
+        <div class="tech-stack">
+          <span class="tech-item">Python</span>
+          <span class="tech-item">Pandas</span>
+          <span class="tech-item">NumPy</span>
+          <span class="tech-item">Docker</span>
+          <span class="tech-item">SQL Server</span>
+          <span class="tech-item">Power BI</span>
+          <span class="tech-item">Git/GitHub</span>
+        </div>
+        <div class="section-content">
+          <p>
+            <strong>Pipeline Architecture:</strong> Data ingestion (Python) → Transformation & validation 
+            (Pandas/NumPy) → SQL Server storage → Power BI visualization → Scheduled automation (Docker)
+          </p>
+          <p>
+            <strong>Key Technical Challenges Solved:</strong>
+          </p>
+          <ul class="feature-list">
+            <li>Handling inconsistent date formats across different source systems</li>
+            <li>Implementing incremental loads to process only new/changed records</li>
+            <li>Creating robust error handling that logs issues without crashing the pipeline</li>
+            <li>Optimizing SQL inserts for bulk loading 50,000+ records efficiently</li>
+            <li>Designing a modular codebase that's easy for other developers to maintain</li>
+          </ul>
+          <p>
+            The code is thoroughly documented with inline comments, includes unit tests for critical functions, 
+            and follows PEP 8 style guidelines. The GitHub repository has a detailed README with setup 
+            instructions and architecture diagrams.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
