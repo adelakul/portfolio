@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road Safety Analytics Dashboard - Tomisin Adelakun</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #14b8a6;
+      --primary-dark: #0d9488;
+      --bg-dark: #0a0a0a;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --border-color: rgba(20, 184, 166, 0.2);
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-dark);
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-button {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-button:hover {
+      color: var(--primary-dark);
+    }
+
+    .header-brand h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .project-hero {
+      padding: 8rem 0 3rem;
+      text-align: center;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(20, 184, 166, 0.2);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(20, 184, 166, 0.1);
+    }
+
+    .project-image {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 3rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-content {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-content p {
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feature-list li {
+      color: var(--text-secondary);
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.8;
+    }
+
+    .feature-list li:before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .impact-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform var(--transition-speed);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .tech-item {
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 3rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-title {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .impact-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <div class="header-brand">
+        <h1>Tomisin Adelakun</h1>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-hero">
+      <div class="container">
+        <span class="project-badge">Public Safety Impact</span>
+        <h1 class="project-title">Road Safety Analytics Dashboard</h1>
+        <p class="project-subtitle">
+          Analyzing 15,000+ crash records to identify patterns and enable data-driven interventions 
+          that could prevent 200-300 road fatalities annually
+        </p>
+        <div class="project-links">
+          <a href="https://app.powerbi.com/reportEmbed?reportId=f012fdf7-54ed-45ac-aafe-291442cd95e0&autoAuth=true&ctid=75597405-56ee-4aba-8e57-a3ddacb51f6d" 
+             target="_blank" 
+             class="btn-primary">
+            <i class="fas fa-external-link-alt"></i> View Live Dashboard
+          </a>
+          <a href="index.html#projects" class="btn-secondary">
+            <i class="fas fa-th-large"></i> All Projects
+          </a>
+        </div>
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1745835037/Screenshot_2025-04-26_140644_w8zauj.png" 
+             alt="Road Safety Dashboard Preview" 
+             class="project-image">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">
+          <i class="fas fa-exclamation-triangle"></i> The Problem
+        </h2>
+        <div class="section-content">
+          <p>
+            Nigeria experiences over 15,000 road crashes annually, resulting in thousands of deaths and injuries. 
+            The Federal Road Safety Corps (FRSC) struggled with outdated reporting methods that took 2+ weeks to 
+            generate insights from crash data. Decision-makers lacked real-time visibility into:
+          </p>
+          <ul class="feature-list">
+            <li>High-risk time periods when most fatal crashes occur</li>
+            <li>Geographic hotspots requiring increased patrol presence</li>
+            <li>Primary causes of accidents (speeding, dangerous driving, vehicle defects)</li>
+            <li>Seasonal and temporal patterns for resource allocation</li>
+          </ul>
+          <p>
+            Without these insights, FRSC couldn't effectively allocate patrol officers, plan enforcement campaigns, 
+            or target interventions to the roads and times where they'd have maximum impact.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-cogs"></i> My Approach
+        </h2>
+        <div class="section-content">
+          <p>
+            I built an interactive Power BI dashboard that transforms raw crash data into actionable insights 
+            through a systematic data pipeline:
+          </p>
+          <ul class="feature-list">
+            <li><strong>Data Collection & Cleaning:</strong> Processed 15,000+ crash records spanning 2019-2024 
+                across all 36 Nigerian states, standardizing location names, timestamps, and crash categories</li>
+            <li><strong>SQL Data Modeling:</strong> Structured the data in SQL Server with fact and dimension tables 
+                for efficient querying and analysis</li>
+            <li><strong>DAX Calculations:</strong> Created complex measures for year-over-year comparisons, 
+                fatality rates, and time-based aggregations</li>
+            <li><strong>Interactive Visualizations:</strong> Built drill-down capabilities enabling users to explore 
+                data from national level down to individual routes</li>
+            <li><strong>Automated Refresh:</strong> Implemented scheduled data refresh to keep dashboard updated 
+                with latest crash reports</li>
+          </ul>
+          <p>
+            The dashboard features temporal analysis (by hour, day, month), geographic heatmaps, cause breakdown, 
+            and severity metrics—all filterable by state, route type, and time period.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-chart-line"></i> Business Impact
+        </h2>
+        <div class="section-content">
+          <p>
+            The dashboard revealed critical patterns that are now driving FRSC policy and resource allocation:
+          </p>
+        </div>
+
+        <div class="impact-metrics">
+          <div class="metric-card">
+            <span class="metric-value">68%</span>
+            <span class="metric-label">Of fatalities occur on federal highways</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">42%</span>
+            <span class="metric-label">Of incidents happen during evening hours (6-9pm)</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">200-300</span>
+            <span class="metric-label">Estimated lives saved annually through targeted patrols</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">Real-time</span>
+            <span class="metric-label">vs 2-week delay with manual Excel reports</span>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <p>
+            <strong>Key Insights Delivered:</strong>
+          </p>
+          <ul class="feature-list">
+            <li>Identified evening rush hour (6-9pm) as the deadliest time period, enabling optimized patrol scheduling</li>
+            <li>Federal highways account for 68% of fatalities despite lower traffic volume, indicating infrastructure issues</li>
+            <li>Speed violations and dangerous driving are top causes, informing enforcement priorities</li>
+            <li>December shows 23% spike in crashes, supporting targeted holiday season campaigns</li>
+          </ul>
+          <p>
+            FRSC leadership now uses this dashboard in weekly planning meetings to allocate patrol officers, 
+            plan public awareness campaigns, and advocate for road infrastructure improvements with data-backed evidence.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-tools"></i> Technical Stack
+        </h2>
+        <div class="tech-stack">
+          <span class="tech-item">Power BI Desktop</span>
+          <span class="tech-item">DAX</span>
+          <span class="tech-item">SQL Server</span>
+          <span class="tech-item">Excel (Data Cleaning)</span>
+          <span class="tech-item">Power Query</span>
+        </div>
+        <div class="section-content">
+          <p>
+            <strong>Development Process:</strong> Data extraction from FRSC databases → Excel preprocessing → 
+            SQL Server storage → Power BI modeling → DAX measure creation → Interactive visualization → 
+            Power BI Service deployment
+          </p>
+          <p>
+            <strong>Key Technical Challenges:</strong> Handling inconsistent location naming across states, 
+            dealing with incomplete records, creating time intelligence calculations for year-over-year comparisons, 
+            and optimizing dashboard performance for large datasets.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
