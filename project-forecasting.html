@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting Model - Tomisin Adelakun</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #14b8a6;
+      --primary-dark: #0d9488;
+      --bg-dark: #0a0a0a;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --border-color: rgba(20, 184, 166, 0.2);
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-dark);
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .back-button {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--transition-speed);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-button:hover {
+      color: var(--primary-dark);
+    }
+
+    .header-brand h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .project-hero {
+      padding: 8rem 0 3rem;
+      text-align: center;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(20, 184, 166, 0.2);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .project-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .project-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(20, 184, 166, 0.1);
+    }
+
+    .project-image {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 3rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-content {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-content p {
+      margin-bottom: 1rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feature-list li {
+      color: var(--text-secondary);
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.8;
+    }
+
+    .feature-list li:before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .impact-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform var(--transition-speed);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-label {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .tech-item {
+      background: rgba(20, 184, 166, 0.1);
+      color: var(--primary-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 3rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-title {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .impact-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <div class="header-brand">
+        <h1>Tomisin Adelakun</h1>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-hero">
+      <div class="container">
+        <span class="project-badge">Predictive Analytics</span>
+        <h1 class="project-title">Adidas Sales Forecasting Model</h1>
+        <p class="project-subtitle">
+          Time-series forecasting with Prophet & ARIMA achieving 85%+ accuracy for 12-month sales predictions, 
+          enabling data-driven inventory planning
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/adelakul/adidas-sales-forecast" 
+             target="_blank" 
+             class="btn-primary">
+            <i class="fab fa-github"></i> View on GitHub
+          </a>
+          <a href="index.html#projects" class="btn-secondary">
+            <i class="fas fa-th-large"></i> All Projects
+          </a>
+        </div>
+        <img src="https://res.cloudinary.com/dgtybiflg/image/upload/v1748399207/my_screen_shot_for_adidas_h4bi6e.png" 
+             alt="Sales Forecasting Dashboard" 
+             class="project-image">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">
+          <i class="fas fa-exclamation-triangle"></i> The Problem
+        </h2>
+        <div class="section-content">
+          <p>
+            Retail businesses face a constant dilemma: how much inventory to stock. The challenges are significant:
+          </p>
+          <ul class="feature-list">
+            <li><strong>Overstocking:</strong> Ties up capital in unsold inventory, increases storage costs, 
+                and leads to markdowns that erode profit margins</li>
+            <li><strong>Understocking:</strong> Causes lost sales, damages customer satisfaction, and gives 
+                competitors an opportunity to capture market share</li>
+            <li><strong>Seasonal Variability:</strong> Sales patterns fluctuate dramatically by season, 
+                making it hard to predict future demand</li>
+            <li><strong>Regional Differences:</strong> Different US markets have vastly different buying patterns 
+                and preferences</li>
+          </ul>
+          <p>
+            Traditional forecasting methods (like "last year plus 10%") fail to capture complex seasonal patterns, 
+            trend changes, and market dynamics. Manual forecasting in Excel is time-consuming, inconsistent, and 
+            doesn't provide confidence intervals to quantify uncertainty.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-cogs"></i> My Approach
+        </h2>
+        <div class="section-content">
+          <p>
+            I built a comprehensive time-series forecasting solution that combines statistical rigor with 
+            practical business application:
+          </p>
+          <ul class="feature-list">
+            <li><strong>Exploratory Data Analysis:</strong> Analyzed historical sales data to identify trends, 
+                seasonality, and outliers using Pandas and visualization libraries</li>
+            <li><strong>Feature Engineering:</strong> Created time-based features (month, quarter, holiday indicators) 
+                and calculated rolling averages to capture momentum</li>
+            <li><strong>Prophet Modeling:</strong> Implemented Facebook Prophet for automatic detection of yearly 
+                seasonality, weekly patterns, and holiday effects</li>
+            <li><strong>ARIMA Modeling:</strong> Built traditional ARIMA models for comparison and to capture 
+                autocorrelation patterns in the time series</li>
+            <li><strong>Model Evaluation:</strong> Compared models using RMSE, MAE, and MAPE on holdout test data 
+                to select the best performer</li>
+            <li><strong>Power BI Integration:</strong> Exported forecasts with confidence intervals to Power BI 
+                for stakeholder dashboards</li>
+          </ul>
+          <p>
+            The solution provides 12-month forward forecasts with upper and lower bounds, allowing planners to 
+            balance risk tolerance with inventory decisions.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-chart-line"></i> Business Impact
+        </h2>
+        
+        <div class="impact-metrics">
+          <div class="metric-card">
+            <span class="metric-value">85%+</span>
+            <span class="metric-label">Forecast accuracy (MAPE)</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">12 months</span>
+            <span class="metric-label">Forward-looking predictions</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">Seasonal</span>
+            <span class="metric-label">Pattern identification</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">Automated</span>
+            <span class="metric-label">Power BI refresh</span>
+          </div>
+        </div>
+
+        <div class="section-content">
+          <p>
+            <strong>Key Insights Delivered:</strong>
+          </p>
+          <ul class="feature-list">
+            <li><strong>Q4 Sales Spike:</strong> Model identified 38% increase in Q4 sales, enabling proactive 
+                inventory buildup for holiday season</li>
+            <li><strong>Regional Patterns:</strong> West Coast shows 23% higher summer sales compared to other regions, 
+                informing regional allocation</li>
+            <li><strong>Product Mix Shifts:</strong> Footwear sales growing 15% YoY while apparel flat, 
+                suggesting portfolio rebalancing</li>
+            <li><strong>Confidence Intervals:</strong> Upper/lower bounds help planners make risk-adjusted decisions 
+                (order conservatively vs aggressively)</li>
+            <li><strong>Early Warning System:</strong> When actual sales deviate from forecast by 15%+, 
+                alerts trigger investigation into market changes</li>
+          </ul>
+          <p>
+            The forecasting model is now used monthly by supply chain planners to make purchasing decisions 
+            6-12 months in advance. The confidence intervals allow them to order base quantities at the lower 
+            bound, with option to order more if demand signals strengthen.
+          </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">
+          <i class="fas fa-tools"></i> Technical Stack
+        </h2>
+        <div class="tech-stack">
+          <span class="tech-item">Python</span>
+          <span class="tech-item">Prophet</span>
+          <span class="tech-item">ARIMA</span>
+          <span class="tech-item">Pandas</span>
+          <span class="tech-item">NumPy</span>
+          <span class="tech-item">Matplotlib</span>
+          <span class="tech-item">Seaborn</span>
+          <span class="tech-item">Statsmodels</span>
+          <span class="tech-item">Power BI</span>
+          <span class="tech-item">Jupyter</span>
+        </div>
+        <div class="section-content">
+          <p>
+            <strong>Modeling Workflow:</strong> Data ingestion → EDA & visualization → Feature engineering → 
+            Train/test split → Prophet & ARIMA training → Model evaluation → Hyperparameter tuning → 
+            Forecast generation → Power BI export
+          </p>
+          <p>
+            <strong>Technical Highlights:</strong>
+          </p>
+          <ul class="feature-list">
+            <li><strong>Prophet Configuration:</strong> Tuned yearly seasonality strength, added custom holiday 
+                calendar (Black Friday, Christmas), and adjusted changepoint sensitivity</li>
+            <li><strong>ARIMA Selection:</strong> Used auto ARIMA to find optimal (p,d,q) parameters through 
+                AIC minimization</li>
+            <li><strong>Cross-Validation:</strong> Implemented time-series cross-validation with expanding window 
+                to avoid data leakage</li>
+            <li><strong>Ensemble Approach:</strong> Combined Prophet and ARIMA forecasts weighted by historical 
+                performance for robust predictions</li>
+            <li><strong>Automated Reporting:</strong> Script exports forecast CSV that Power BI imports automatically, 
+                updating dashboards monthly</li>
+          </ul>
+          <p>
+            All code is well-documented in Jupyter notebooks with markdown explanations of methodology, 
+            model selection rationale, and interpretation of results. The GitHub repository includes 
+            sample data and step-by-step instructions for reproduction.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
